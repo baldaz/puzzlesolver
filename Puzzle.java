@@ -13,6 +13,24 @@ public class Puzzle {
         pieces.add(p);
     }
 
+    public Piece firstPiece() {
+        Iterator<Piece> it = pieces.iterator();
+        while(it.hasNext()) {
+            Piece ret = it.next();
+            if(ret.north().equals("VUOTO") && ret.west().equals("VUOTO")) return ret;
+        }
+        return null;
+    }
+
+    public Piece findNext(Piece p)  {
+        Iterator<Piece> it = pieces.iterator();
+        while(it.hasNext()) {
+            Piece ret = it.next();
+            if(ret.id().equals(p.id())) return ret;
+        }
+        return null;
+    }
+
     public void sort() {
 
     }

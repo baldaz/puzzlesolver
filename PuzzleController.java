@@ -11,10 +11,13 @@ public class PuzzleController {
     }
 
     public void sort() {
-
+        Puzzle ret = new Puzzle();
+        ret.addPiece(model.firstPiece());
+        model = ret;
     }
 
     public void display() {
         view.printPuzzle(model);
     }
+
 }
