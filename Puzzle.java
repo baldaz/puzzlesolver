@@ -22,17 +22,53 @@ public class Puzzle {
         return null;
     }
 
+    public Piece find(String id) {
+        Iterator<Piece> it = pieces.iterator();
+        while(it.hasNext()) {
+            Piece p = it.next();
+            if(p.id() == id) return p;
+        }
+        return null;
+    }
+
     public Piece findNext(Piece p)  {
         Iterator<Piece> it = pieces.iterator();
         while(it.hasNext()) {
             Piece ret = it.next();
-            if(ret.id().equals(p.id())) return ret;
+            if(ret.id().equals(p.east())) return ret;
+        }
+        return null;
+    }
+
+    public Piece findNextInCol(Piece p) {
+        Iterator<Piece> it = pieces.iterator();
+        while(it.hasNext()) {
+            Piece ret = it.next();
+            if(ret.id().equals(p.south())) return ret;
         }
         return null;
     }
 
     public void sort() {
-
+        Vector<Piece> ret = new Vector<Piece>();
+        Piece first = firstPiece();
+        ret.add(first);
+        Piece nxt = find(first.east());
+        while(nxt != null) {
+            ret.add(nxt);
+            nxt = findNext(nxt);
+        }
+        Vector<Piece> ret2 = new Vector<Piece>();
+        Iterator<Piece> it = ret.iterator();
+        while(it.hasNext()) {
+            nxt = findNextInCol(it.next());
+            while(nxt != null) {
+                ret2.add(nxt);
+                nxt = findNextInCol(nxt);
+            }
+        }
+        ret.addAll(ret2);
+        pieces = ret;
     }
 
     public String toString() {

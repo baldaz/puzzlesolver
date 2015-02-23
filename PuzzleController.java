@@ -11,9 +11,7 @@ public class PuzzleController {
     }
 
     public void sort() {
-        Puzzle ret = new Puzzle();
-        ret.addPiece(model.firstPiece());
-        model = ret;
+        model.sort();
     }
 
     public void display() {
