@@ -20,6 +20,10 @@ public class Piece {
     return id;
   }
 
+  public String ch() {
+    return ch;
+  }
+
   public String north() {
     return north;
   }
