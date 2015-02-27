@@ -13,6 +13,10 @@ public class Puzzle {
         pieces.add(p);
     }
 
+    public Vector<Piece> pieces() {
+        return pieces;
+    }
+
     public Piece firstPiece() {
         Iterator<Piece> it = pieces.iterator();
         while(it.hasNext()) {
@@ -49,26 +53,27 @@ public class Puzzle {
         return null;
     }
 
-    public void sort() {
+    public Vector<Piece> sortRow(Piece first) {
         Vector<Piece> ret = new Vector<Piece>();
-        Piece first = firstPiece();
         ret.add(first);
         Piece nxt = find(first.east());
         while(nxt != null) {
             ret.add(nxt);
             nxt = findNext(nxt);
         }
-        Vector<Piece> ret2 = new Vector<Piece>();
-        Iterator<Piece> it = ret.iterator();
-        while(it.hasNext()) {
-            nxt = findNextInCol(it.next());
-            while(nxt != null) {
-                ret2.add(nxt);
-                nxt = findNextInCol(nxt);
-            }
+        return ret;
+    }
+
+    public void sort() {
+        Piece first = firstPiece();
+        Vector<Piece> row = sortRow(first);
+        Piece tmp = find(row.firstElement().south());
+        for(int i = 0; i < 2; ++i) {
+            Vector<Piece> rowtmp = sortRow(tmp);
+            row.addAll(rowtmp);
+            tmp = find(tmp.south());
         }
-        ret.addAll(ret2);
-        pieces = ret;
+        pieces = row;
     }
 
     public String toString() {
