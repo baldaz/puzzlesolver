@@ -1,3 +1,5 @@
+package puzzlesolver;
+
 // This class will contain sorting logic of the puzzle
 import java.util.Vector;
 import java.util.Iterator;

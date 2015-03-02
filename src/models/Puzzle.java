@@ -1,3 +1,5 @@
+package puzzlesolver;
+
 import java.util.Vector;
 import java.util.Iterator;
 

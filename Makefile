@@ -1,18 +1,22 @@
 JC = javac
+BIN = -g -classpath bin -d bin
+
 .SUFFIXES: .java .class
 .java.class:
 	$(JC) $*.java
 
-CLASSES = \
-	Piece.java \
-	PieceController.java \
-	PieceView.java \
-	Puzzle.java \
-	PuzzleView.java \
-	PuzzleController.java \
-	PuzzleSolver.java
+default: PuzzleSolver
 
-default: classes
-classes: $(CLASSES:.java=.class)
+Piece.class:
+	$(JC) $(BIN) src/models/Piece.java
+Puzzle.class: Piece.class
+	$(JC) $(BIN) src/models/Puzzle.java
+PuzzleView.class: Puzzle.class
+	$(JC) $(BIN) src/views/PuzzleView.java
+PuzzleController.class: Puzzle.class PuzzleView.class
+	$(JC) $(BIN) src/controllers/PuzzleController.java
+PuzzleSolver: PuzzleController.class
+	$(JC) $(BIN) src/PuzzleSolver.java
+
 clean:
-	$(RM) *.class
+	$(RM) bin/puzzlesolver/*.class $(RM) bin/*.class

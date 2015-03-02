@@ -1,3 +1,5 @@
+package puzzlesolver;
+
 public class Piece {
 
   private String id;
