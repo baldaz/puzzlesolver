@@ -43,8 +43,9 @@ public class PuzzleSolver {
         // puzzle.addPiece(p10);
         // puzzle.addPiece(p11);
         // puzzle.addPiece(p12);
-        Puzzle puzzle = readFile(Paths.get(args[0]));
-        System.out.println(puzzle.size());
+        Puzzle puzzle = new Puzzle();
+        puzzle = readFile(Paths.get(args[0]));
+        // System.out.println(puzzle.size());
         // View, will save to file after controller operation of sorting
         PuzzleView view = new PuzzleView();
         PuzzleController controller = new PuzzleController(puzzle, view);

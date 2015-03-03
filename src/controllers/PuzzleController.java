@@ -50,7 +50,7 @@ public class PuzzleController {
         Iterator<Piece> it = model.pieces().iterator();
         while(it.hasNext()) {
             Piece p = it.next();
-            if(p.id() == id) return p;
+            if(p.id().equals(id)) return p;
         }
         return null;
     }
