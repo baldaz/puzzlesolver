@@ -4,12 +4,12 @@ package puzzlesolver;
 import java.util.Vector;
 import java.util.Iterator;
 
-public class PuzzleController {
+public class PuzzleController implements IPuzzleController {
 
     private Puzzle model;
-    private PuzzleView view;
+    private IPuzzleView view;
 
-    public PuzzleController(Puzzle m, PuzzleView v) {
+    public PuzzleController(Puzzle m, IPuzzleView v) {
         model = m;
         view = v;
     }

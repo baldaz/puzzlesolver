@@ -4,7 +4,7 @@ import java.util.Vector;
 import java.util.Iterator;
 // Here i'll make output to file logic
 
-public class PuzzleView {
+public class PuzzleView implements IPuzzleView {
 
     public void printPuzzle(Puzzle p) {
         System.out.println(p);

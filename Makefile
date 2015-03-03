@@ -12,9 +12,9 @@ Piece.class:
 Puzzle.class: Piece.class
 	$(JC) $(BIN) src/models/Puzzle.java
 PuzzleView.class: Puzzle.class
-	$(JC) $(BIN) src/views/PuzzleView.java
+	$(JC) $(BIN) src/views/IPuzzleView.java src/views/PuzzleView.java
 PuzzleController.class: Puzzle.class PuzzleView.class
-	$(JC) $(BIN) src/controllers/PuzzleController.java
+	$(JC) $(BIN) src/controllers/IPuzzleController.java src/controllers/PuzzleController.java
 PuzzleSolver: PuzzleController.class
 	$(JC) $(BIN) src/PuzzleSolver.java
 
