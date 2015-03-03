@@ -1,4 +1,4 @@
 #!/bin/bash
 
 make
-java -cp bin PuzzleSolver
+java -cp bin PuzzleSolver input

@@ -11,6 +11,10 @@ public class Puzzle {
         pieces = new Vector<Piece>();
     }
 
+    public int size() {
+        return pieces.size();
+    }
+
     public void addPiece(Piece p) {
         pieces.add(p);
     }
