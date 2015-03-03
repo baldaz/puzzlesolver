@@ -4,3 +4,7 @@ P3 project, a simple distribuited puzzle solver.
 - MVC
 - Interface vs Abstract classes
 - Maybe Abstract class implements Interface
+
+### TODO
+- Move read / write into view/iview
+- Abstract Piece / Puzzle

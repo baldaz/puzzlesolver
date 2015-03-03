@@ -2,6 +2,7 @@ package puzzlesolver;
 
 import java.util.Vector;
 import java.util.Iterator;
+
 // Here i'll make output to file logic
 
 public class PuzzleView implements IPuzzleView {
