@@ -1,5 +1,5 @@
 # puzzlesolver
-P3 project, a simple distribuited puzzle solver.
+P3 project, a simple distributed puzzle solver.
 ### Patterns
 - MVC
 - Interface vs Abstract classes
