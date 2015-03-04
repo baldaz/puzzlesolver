@@ -40,11 +40,23 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
         ret.add(p);
         Piece nxt = nextInRow(p);
         while(nxt != null) {
-            ret.add(nxt);
+            ret.add(nxt); // last
             nxt = nextInRow(nxt);
         }
         return ret;
     }
 
-    public void run() {}
+    public void run() {
+        boolean loop = true;
+        Piece first = firstPiece(); // first piece
+        Vector<Piece> row = sortRow(first); // first row
+        Piece tmp = nextInCol(row.firstElement()); // first column
+        while(loop) {
+            Vector<Piece> rowtmp = sortRow(tmp);
+            row.addAll(rowtmp);
+            if(tmp.north().equals("VUOTO")) loop = false;
+            else tmp = nextInCol(tmp);
+        }
+        puzzle().setPieces(row);
+    }
 }

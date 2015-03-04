@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 public abstract class SortAlg {
 
+    private static int size = 30;
     private Puzzle model;
 
     public SortAlg(Puzzle m) {
