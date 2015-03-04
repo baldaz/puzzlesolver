@@ -11,9 +11,9 @@ Piece.class:
 	$(JC) $(BIN) src/models/Piece.java
 Puzzle.class: Piece.class
 	$(JC) $(BIN) src/models/Puzzle.java
-InputPuzzle.class:
-	$(JC) $(BIN) src/models/InputFileStream.java src/models/InputPuzzle.java
-PuzzleView.class: Puzzle.class InputPuzzle.class
+IOPuzzle.class:
+	$(JC) $(BIN) src/models/IOFile.java src/models/IOPuzzle.java
+PuzzleView.class: Puzzle.class IOPuzzle.class
 	$(JC) $(BIN) src/views/IPuzzleView.java src/views/PuzzleView.java
 PuzzleController.class: Puzzle.class PuzzleView.class
 	$(JC) $(BIN) src/controllers/IPuzzleController.java src/controllers/PuzzleController.java
