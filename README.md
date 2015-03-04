@@ -8,3 +8,4 @@ P3 project, a simple distributed puzzle solver.
 ### TODO
 - Move read / write into view/iview
 - Abstract Piece / Puzzle
+- Sort algorithm private

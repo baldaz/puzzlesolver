@@ -18,8 +18,11 @@ public class PuzzleController implements IPuzzleController {
         SortAlgFromTop alg = new SortAlgFromTop(model);
         Thread t = new Thread(alg);
         t.start();
-        model = alg.puzzle();
-        // t.stop();
+        try {
+            t.join();
+        } catch(InterruptedException e) {
+            System.err.println(e);
+        }
     }
 
     public void display() {
