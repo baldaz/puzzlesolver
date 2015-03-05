@@ -55,17 +55,24 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
         return ret;
     }
 
-    public void run() {
+    public void sort() {
         boolean loop = true;
         Piece first = firstPiece(); // first piece
         Vector<Piece> row = sortRow(first); // first row
         Piece tmp = nextInCol(row.firstElement()); // first column
-        while(loop) {
+        while(size > 0) {
             Vector<Piece> rowtmp = sortRow(tmp);
             row.addAll(rowtmp);
             if(tmp.south().equals("VUOTO")) loop = false;
             else tmp = nextInCol(tmp);
         }
-        puzzle().setPieces(row);
+        synchronized(puzzle()) {
+            puzzle().setPieces(row);
+            puzzle().notify();
+        }
+    }
+
+    public void run() {
+        sort();
     }
 }
