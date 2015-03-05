@@ -15,8 +15,8 @@ public class PuzzleController implements IPuzzleController {
     }
 
     public void sort() {
-        SortAlgFromTop alg = new SortAlgFromTop(model);
         SortAlgFromBottom algb = new SortAlgFromBottom(model);
+        SortAlgFromTop alg = new SortAlgFromTop(model, algb);
         SortAlg.setSize(30);
         Thread top = new Thread(alg);
         Thread bot = new Thread(algb);
@@ -28,6 +28,11 @@ public class PuzzleController implements IPuzzleController {
         } catch(InterruptedException e) {
             System.err.println(e);
         }
+        System.out.println(SortAlg.size());
+        // Vector<Piece> sortedPuzzle = alg.puzzle().pieces();
+        // Vector<Piece> sortedHalf = algb.puzzle().pieces();
+        // sortedPuzzle.addAll(sortedHalf);
+        // model.setPieces(sortedPuzzle);
     }
 
     public void display() {

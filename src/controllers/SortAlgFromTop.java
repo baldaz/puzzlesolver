@@ -5,8 +5,11 @@ import java.util.Iterator;
 
 public class SortAlgFromTop extends SortAlg implements Runnable {
 
-    public SortAlgFromTop(Puzzle model) {
+    private SortAlgFromBottom bottom;
+
+    public SortAlgFromTop(Puzzle model, SortAlgFromBottom bot) {
         super(model);
+        bottom = bot;
     }
 
     public Piece firstPiece() {
@@ -60,15 +63,16 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
         Piece first = firstPiece(); // first piece
         Vector<Piece> row = sortRow(first); // first row
         Piece tmp = nextInCol(row.firstElement()); // first column
-        while(size > 0) {
-            Vector<Piece> rowtmp = sortRow(tmp);
-            row.addAll(rowtmp);
-            if(tmp.south().equals("VUOTO")) loop = false;
-            else tmp = nextInCol(tmp);
-        }
-        synchronized(puzzle()) {
+        synchronized(bottom) {
+            while(size > 0) {
+                Vector<Piece> rowtmp = sortRow(tmp);
+                row.addAll(rowtmp);
+                if(tmp.south().equals("VUOTO")) loop = false;
+                else tmp = nextInCol(tmp);
+            }
             puzzle().setPieces(row);
-            puzzle().notify();
+            // bottom.setSuspend(false);
+            // bottom.notify();
         }
     }
 

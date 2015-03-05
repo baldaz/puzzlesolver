@@ -6,8 +6,14 @@ import java.util.Collections;
 
 public class SortAlgFromBottom extends SortAlg implements Runnable {
 
+    public boolean suspend = true;
+
     public SortAlgFromBottom(Puzzle model) {
         super(model);
+    }
+
+    public void setSuspend(boolean d) {
+        suspend = d;
     }
 
     public Piece firstPiece() {
@@ -61,19 +67,21 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
         Piece first = firstPiece(); // first piece
         Vector<Piece> row = sortRow(first); // first row
         Piece tmp = nextInCol(row.firstElement()); // first column
-        while(size > 0) {
-            Vector<Piece> rowtmp = sortRow(tmp);
-            row.addAll(rowtmp);
-            if(tmp.north().equals("VUOTO")) loop = false;
-            else tmp = nextInCol(tmp);
-        }
-        Collections.reverse(row);
-        synchronized(puzzle()) {
-            try {
-                puzzle().wait();
-            } catch(InterruptedException e) {
-                System.err.println(e);
+        synchronized(this) {
+            while(size > 0) {
+                Vector<Piece> rowtmp = sortRow(tmp);
+                row.addAll(rowtmp);
+                if(tmp.north().equals("VUOTO")) loop = false;
+                else tmp = nextInCol(tmp);
             }
+            Collections.reverse(row);
+            // while(suspend) {
+            //     try {
+            //         wait();
+            //     } catch(InterruptedException e) {
+            //         System.err.println(e);
+            //     }
+            // }
             puzzle().pieces().addAll(row);
         }
     }
