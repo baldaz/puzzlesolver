@@ -11,10 +11,6 @@ public class Puzzle {
         pieces = new Vector<Piece>();
     }
 
-    public Puzzle(Puzzle p) {
-        pieces = p.pieces();
-    }
-
     public int size() {
         return pieces.size();
     }
