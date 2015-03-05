@@ -13,7 +13,10 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
         Iterator<Piece> it = puzzle().pieces().iterator();
         while(it.hasNext()) {
             Piece ret = it.next();
-            if(ret.north().equals("VUOTO") && ret.west().equals("VUOTO")) return ret;
+            if(ret.north().equals("VUOTO") && ret.west().equals("VUOTO")) {
+                --size;
+                return ret;
+            }
         }
         return null;
     }
@@ -22,7 +25,10 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
         Iterator<Piece> it = puzzle().pieces().iterator();
         while(it.hasNext()) {
             Piece ret = it.next();
-            if(ret.id().equals(p.east())) return ret;
+            if(ret.id().equals(p.east())) {
+                --size;
+                return ret;
+            }
         }
         return null;
     }
@@ -30,7 +36,10 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
         Iterator<Piece> it = puzzle().pieces().iterator();
         while(it.hasNext()) {
             Piece ret = it.next();
-            if(ret.id().equals(p.south())) return ret;
+            if(ret.id().equals(p.south())) {
+                --size;
+                return ret;
+            }
         }
         return null;
     }

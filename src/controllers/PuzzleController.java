@@ -16,17 +16,18 @@ public class PuzzleController implements IPuzzleController {
 
     public void sort() {
         SortAlgFromTop alg = new SortAlgFromTop(model);
-        // SortAlgFromBottom algb = new SortAlgFromBottom(model);
+        SortAlgFromBottom algb = new SortAlgFromBottom(model);
         Thread t = new Thread(alg);
-        // Thread t2 = new Thread(algb);
-        // t2.start();
+        Thread t2 = new Thread(algb);
+        t2.start();
         t.start();
         try {
-            // t2.join();
             t.join();
+            t2.join();
         } catch(InterruptedException e) {
             System.err.println(e);
         }
+        System.out.println(alg.size());
     }
 
     public void display() {
