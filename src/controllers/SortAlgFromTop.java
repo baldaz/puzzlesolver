@@ -17,7 +17,7 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
         while(it.hasNext()) {
             Piece ret = it.next();
             if(ret.north().equals("VUOTO") && ret.west().equals("VUOTO")) {
-                --size;
+                // size--;
                 return ret;
             }
         }
@@ -29,7 +29,7 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
         while(it.hasNext()) {
             Piece ret = it.next();
             if(ret.id().equals(p.east())) {
-                --size;
+                size--;
                 return ret;
             }
         }
@@ -40,7 +40,7 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
         while(it.hasNext()) {
             Piece ret = it.next();
             if(ret.id().equals(p.south())) {
-                --size;
+                size--;
                 return ret;
             }
         }
@@ -59,7 +59,6 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
     }
 
     public void sort() {
-        boolean loop = true;
         Piece first = firstPiece(); // first piece
         Vector<Piece> row = sortRow(first); // first row
         Piece tmp = nextInCol(row.firstElement()); // first column
@@ -67,12 +66,12 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
             while(size > 0) {
                 Vector<Piece> rowtmp = sortRow(tmp);
                 row.addAll(rowtmp);
-                if(tmp.south().equals("VUOTO")) loop = false;
-                else tmp = nextInCol(tmp);
+                tmp = nextInCol(tmp);
             }
             puzzle().setPieces(row);
-            // bottom.setSuspend(false);
-            // bottom.notify();
+            System.out.println("FromTop: " + row.size());
+            bottom.setSuspend(false);
+            bottom.notify();
         }
     }
 

@@ -6,7 +6,7 @@ import java.util.Collections;
 
 public class SortAlgFromBottom extends SortAlg implements Runnable {
 
-    public boolean suspend = true;
+    private boolean suspend = true;
 
     public SortAlgFromBottom(Puzzle model) {
         super(model);
@@ -21,7 +21,7 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
         while(it.hasNext()) {
             Piece ret = it.next();
             if(ret.south().equals("VUOTO") && ret.east().equals("VUOTO")) {
-                --size;
+                // size--;
                 return ret;
             }
         }
@@ -33,18 +33,19 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
         while(it.hasNext()) {
             Piece ret = it.next();
             if(ret.id().equals(p.west())) {
-                --size;
+                size--;
                 return ret;
             }
         }
         return null;
     }
+
     public Piece nextInCol(Piece p) {
         Iterator<Piece> it = puzzle().pieces().iterator();
         while(it.hasNext()) {
             Piece ret = it.next();
             if(ret.id().equals(p.north())) {
-                --size;
+                size--;
                 return ret;
             }
         }
@@ -63,7 +64,6 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
     }
 
     public void sort() {
-        boolean loop = true;
         Piece first = firstPiece(); // first piece
         Vector<Piece> row = sortRow(first); // first row
         Piece tmp = nextInCol(row.firstElement()); // first column
@@ -71,18 +71,18 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
             while(size > 0) {
                 Vector<Piece> rowtmp = sortRow(tmp);
                 row.addAll(rowtmp);
-                if(tmp.north().equals("VUOTO")) loop = false;
-                else tmp = nextInCol(tmp);
+                tmp = nextInCol(tmp);
             }
             Collections.reverse(row);
-            // while(suspend) {
-            //     try {
-            //         wait();
-            //     } catch(InterruptedException e) {
-            //         System.err.println(e);
-            //     }
-            // }
+            while(suspend) {
+                try {
+                    wait();
+                } catch(InterruptedException e) {
+                    System.err.println(e);
+                }
+            }
             puzzle().pieces().addAll(row);
+            System.out.println("FromBottom: " + row.size());
         }
     }
 
