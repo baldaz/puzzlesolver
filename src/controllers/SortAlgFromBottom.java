@@ -81,7 +81,8 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
                     System.err.println(e);
                 }
             }
-            puzzle().pieces().addAll(halfsize, row);
+            if(row.size() == (halfsize * 2)) puzzle().setPieces(row);
+            else puzzle().pieces().addAll(halfsize, row);
             System.out.println("FromBottom: " + row.size());
         }
     }

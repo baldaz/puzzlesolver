@@ -30,7 +30,7 @@ public class PuzzleController implements IPuzzleController {
         } catch(InterruptedException e) {
             System.err.println(e);
         }
-        // model.pieces().setSize(msize);
+        model.pieces().setSize(msize);
         System.out.println(alg.size());
     }
 
