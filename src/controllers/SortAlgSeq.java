@@ -9,7 +9,7 @@ public class SortAlgSeq extends SortAlg {
         super(model);
     }
 
-    public Piece firstPiece() {
+    private Piece firstPiece() {
         Iterator<Piece> it = puzzle().pieces().iterator();
         while(it.hasNext()) {
             Piece ret = it.next();
@@ -18,7 +18,7 @@ public class SortAlgSeq extends SortAlg {
         return null;
     }
 
-    public Piece nextInRow(Piece p) {
+    private Piece nextInRow(Piece p) {
         Iterator<Piece> it = puzzle().pieces().iterator();
         while(it.hasNext()) {
             Piece ret = it.next();
@@ -26,7 +26,7 @@ public class SortAlgSeq extends SortAlg {
         }
         return null;
     }
-    public Piece nextInCol(Piece p) {
+    private Piece nextInCol(Piece p) {
         Iterator<Piece> it = puzzle().pieces().iterator();
         while(it.hasNext()) {
             Piece ret = it.next();
@@ -35,7 +35,7 @@ public class SortAlgSeq extends SortAlg {
         return null;
     }
 
-    public Vector<Piece> sortRow(Piece p) {
+    private Vector<Piece> sortRow(Piece p) {
         Vector<Piece> ret = new Vector<Piece>();
         ret.add(p);
         Piece nxt = nextInRow(p);
@@ -44,5 +44,18 @@ public class SortAlgSeq extends SortAlg {
             nxt = nextInRow(nxt);
         }
         return ret;
+    }
+
+    public void sort() {
+        boolean loop = true;
+        Piece first = firstPiece(); // first piece
+        Vector<Piece> row = new Vector<Piece>();
+        while(loop) {
+            Vector<Piece> tmp = sortRow(first);
+            row.addAll(tmp);
+            if(first.south().equals("VUOTO")) loop = false;
+            else first = nextInCol(tmp.firstElement());
+        }
+        puzzle().setPieces(row);
     }
 }
