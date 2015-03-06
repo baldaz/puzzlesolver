@@ -21,7 +21,7 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
         while(it.hasNext()) {
             Piece ret = it.next();
             if(ret.south().equals("VUOTO") && ret.east().equals("VUOTO")) {
-                // size--;
+                size--;
                 return ret;
             }
         }
@@ -65,13 +65,13 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 
     public void sort() {
         Piece first = firstPiece(); // first piece
-        Vector<Piece> row = sortRow(first); // first row
-        Piece tmp = nextInCol(row.firstElement()); // first column
+        Vector<Piece> row = new Vector<Piece>();
         synchronized(this) {
             while(size > 0) {
-                Vector<Piece> rowtmp = sortRow(tmp);
-                row.addAll(rowtmp);
-                tmp = nextInCol(tmp);
+                Vector<Piece> tmp = sortRow(first);
+                row.addAll(tmp);
+                first = nextInCol(tmp.firstElement());
+                System.out.println("check");
             }
             Collections.reverse(row);
             while(suspend) {
@@ -81,7 +81,7 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
                     System.err.println(e);
                 }
             }
-            puzzle().pieces().addAll(row);
+            puzzle().pieces().addAll(halfsize, row);
             System.out.println("FromBottom: " + row.size());
         }
     }

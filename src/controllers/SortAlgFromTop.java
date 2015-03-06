@@ -60,15 +60,15 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
 
     public void sort() {
         Piece first = firstPiece(); // first piece
-        Vector<Piece> row = sortRow(first); // first row
-        Piece tmp = nextInCol(row.firstElement()); // first column
+        Vector<Piece> row = new Vector<Piece>();
         synchronized(bottom) {
-            while(size > 0) {
-                Vector<Piece> rowtmp = sortRow(tmp);
-                row.addAll(rowtmp);
-                tmp = nextInCol(tmp);
+            while(size > halfsize) {
+                Vector<Piece> tmp = sortRow(first);
+                row.addAll(tmp);
+                first = nextInCol(tmp.firstElement());
+                System.out.println("checktop");
             }
-            puzzle().setPieces(row);
+            puzzle().pieces().addAll(0, row);
             System.out.println("FromTop: " + row.size());
             bottom.setSuspend(false);
             bottom.notify();
