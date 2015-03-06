@@ -12,7 +12,7 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
         bottom = bot;
     }
 
-    public Piece firstPiece() {
+    private Piece firstPiece() {
         Iterator<Piece> it = puzzle().pieces().iterator();
         while(it.hasNext()) {
             Piece ret = it.next();
@@ -24,7 +24,7 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
         return null;
     }
 
-    public Piece nextInRow(Piece p) {
+    private Piece nextInRow(Piece p) {
         Iterator<Piece> it = puzzle().pieces().iterator();
         while(it.hasNext()) {
             Piece ret = it.next();
@@ -35,7 +35,7 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
         }
         return null;
     }
-    public Piece nextInCol(Piece p) {
+    private Piece nextInCol(Piece p) {
         Iterator<Piece> it = puzzle().pieces().iterator();
         while(it.hasNext()) {
             Piece ret = it.next();
@@ -47,7 +47,7 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
         return null;
     }
 
-    public Vector<Piece> sortRow(Piece p) {
+    private Vector<Piece> sortRow(Piece p) {
         Vector<Piece> ret = new Vector<Piece>();
         ret.add(p);
         Piece nxt = nextInRow(p);

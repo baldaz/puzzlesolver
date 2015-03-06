@@ -30,13 +30,5 @@ public abstract class SortAlg {
         return size;
     }
 
-    public abstract Piece firstPiece();
-
-    public abstract Piece nextInRow(Piece p);
-
-    public abstract Piece nextInCol(Piece p);
-
-    public abstract Vector<Piece> sortRow(Piece p);
-
     public abstract void sort();
 }
