@@ -1,0 +1,9 @@
+.1	.	i2	VUOTO	VUOTO	u2
+i1	i	VUOTO	VUOTO	i2	u1
+s1	s	q1	e1	t1	VUOTO
+q1	q	VUOTO	u1	s1	VUOTO
+e1	e	u1	i2	u2	s1
+i2	i	i1	VUOTO	.1	e1
+t1	t	s1	u2	VUOTO	VUOTO
+u1	u	VUOTO	i1	e1	q1
+u2	u	e1	.1	VUOTO	t1
