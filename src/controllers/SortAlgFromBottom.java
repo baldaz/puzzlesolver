@@ -73,7 +73,7 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
                 Vector<Piece> tmp = sortRow(first);
                 row.addAll(tmp);
                 first = nextInCol(tmp.firstElement());
-                System.out.println("check");
+                System.out.println("checkbottom");
             }
             Collections.reverse(row);
             // while(suspend) {

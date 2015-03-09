@@ -52,7 +52,7 @@ public class IOPuzzle extends IOFile {
 
     public void write() {
         int row = 0;
-        int col = 0;
+        int col = 1;
         int size = puzzle.size();
         String pcomplete = "";
         Iterator<Piece> it = puzzle().pieces().iterator();
