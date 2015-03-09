@@ -15,12 +15,19 @@ public class PuzzleController implements IPuzzleController {
     }
 
     public void sort() {
+        int jump = 0;
         int msize = model.size();
         int hsize = 0;
-        if((msize % 2) == 0) hsize = msize / 2;
-        else hsize = (msize / 2) + 1;
-        SortAlgFromBottom algb = new SortAlgFromBottom(model, hsize);
-        SortAlgFromTop alg = new SortAlgFromTop(model, algb, msize/2);
+        if((msize % 2) == 0) {
+            hsize = msize / 2;
+            jump = hsize;
+        }
+        else {
+            hsize = (msize / 2) + 1;
+            jump = hsize - 2;
+        }
+        SortAlgFromBottom algb = new SortAlgFromBottom(model, hsize, jump);
+        SortAlgFromTop alg = new SortAlgFromTop(model, algb, msize / 2);
         Thread top = new Thread(alg);
         Thread bot = new Thread(algb);
         top.start();
