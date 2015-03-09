@@ -6,16 +6,22 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.util.Iterator;
 
 public class IOPuzzle extends IOFile {
 
     private static Charset charset = StandardCharsets.UTF_8;
+    private Puzzle puzzle;
 
     public IOPuzzle(String path) {
         super(path);
     }
 
-    public Puzzle read() {
+    public Puzzle puzzle() {
+        return puzzle;
+    }
+
+    public void read() {
         Puzzle ret = new Puzzle();
         try (BufferedReader reader = Files.newBufferedReader(toPath(), charset)) {
             String line = null;
@@ -37,10 +43,40 @@ public class IOPuzzle extends IOFile {
         } catch (IOException e) {
             System.err.println(e);
         }
-        return ret;
+        puzzle = ret;
     }
 
     public void write() {
-
+        int row = 0;
+        int col = 1;
+        int size = puzzle.size();
+        String pcomplete = "";
+        Iterator<Piece> it = puzzle().pieces().iterator();
+        Piece temp = puzzle.pieces().firstElement();
+        try (BufferedWriter writer = Files.newBufferedWriter(toPath(), charset)) {
+            while(!temp.east().equals("VUOTO")) {
+                writer.write(temp.ch());
+                col++;
+                temp = it.next();
+                String token = "";
+                if(temp.east().equals("VUOTO")) token = temp.ch() + "\n";
+                else token = temp.ch();
+                pcomplete += token;
+            }
+            row = size / col;
+            while(it.hasNext()) {
+                temp = it.next();
+                writer.write(temp.ch());
+                String token = "";
+                if(temp.east().equals("VUOTO")) token = temp.ch() + "\n";
+                else token = temp.ch();
+                pcomplete += token;
+            }
+            writer.write("\n");
+            writer.write(pcomplete);
+            writer.write(row); writer.write(" "); writer.write(col);
+        } catch (IOException e) {
+            System.err.println(e);
+        }
     }
 }

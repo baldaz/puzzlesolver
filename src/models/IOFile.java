@@ -8,7 +8,7 @@ public abstract class IOFile extends File {
         super(path);
     }
 
-    public abstract Puzzle read();
+    public abstract void read();
 
     public abstract void write();
 

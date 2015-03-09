@@ -1,8 +1,9 @@
 package puzzlesolver;
 
 public interface IPuzzleView {
+    public Puzzle puzzle();
     // read from file and populate puzzle
-    public Puzzle inputPuzzle();
+    public void inputPuzzle();
     // write sorted puzzle on file
     public void outputPuzzle();
     // print puzzle in table form, utility

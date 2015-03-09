@@ -5,5 +5,5 @@ if [[ -z $1 ]]; then
     exit;
 else
     make
-    java -cp bin PuzzleSolver $1
+    java -cp bin PuzzleSolver $1 $2
 fi

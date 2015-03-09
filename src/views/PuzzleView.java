@@ -7,14 +7,18 @@ import java.util.Iterator;
 
 public class PuzzleView implements IPuzzleView {
 
-    private IOFile io;
+    private IOPuzzle io;
 
-    public PuzzleView(IOFile io) {
+    public PuzzleView(IOPuzzle io) {
         this.io = io;
     }
 
-    public Puzzle inputPuzzle() {
-        return io.read();
+    public Puzzle puzzle() {
+        return io.puzzle();
+    }
+
+    public void inputPuzzle() {
+        io.read();
     }
 
     public void outputPuzzle() {
