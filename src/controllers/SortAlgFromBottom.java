@@ -67,7 +67,8 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
         int halfsize = size;
         Piece first = firstPiece(); // first piece
         Vector<Piece> row = new Vector<Piece>();
-        synchronized(this) {
+        // synchronized(this) {
+        synchronized(puzzle()) {
             while(size > 0) {
                 Vector<Piece> tmp = sortRow(first);
                 row.addAll(tmp);
@@ -75,17 +76,18 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
                 System.out.println("check");
             }
             Collections.reverse(row);
-            while(suspend) {
-                try {
-                    wait();
-                } catch(InterruptedException e) {
-                    System.err.println(e);
-                }
-            }
+            // while(suspend) {
+            //     try {
+            //         wait();
+            //     } catch(InterruptedException e) {
+            //         System.err.println(e);
+            //     }
+            // }
             // if(row.size() == (halfsize * 2)) puzzle().setPieces(row);
-            puzzle().pieces().addAll(halfsize, row);
+                puzzle().pieces().addAll(halfsize, row);
+            }
             System.out.println("FromBottom: " + row.size());
-        }
+        // }
     }
 
     public void run() {

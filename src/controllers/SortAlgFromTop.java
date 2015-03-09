@@ -61,18 +61,21 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
     public void sort() {
         Piece first = firstPiece(); // first piece
         Vector<Piece> row = new Vector<Piece>();
-        synchronized(bottom) {
+        // synchronized(bottom) {
+        synchronized(puzzle()) {
             while(size > 0) {
                 Vector<Piece> tmp = sortRow(first);
                 row.addAll(tmp);
                 first = nextInCol(tmp.firstElement());
                 System.out.println("checktop");
             }
-            puzzle().pieces().addAll(0, row);
+                puzzle().pieces().addAll(0, row);
+            // puzzle().setPieces(row);
+            }
             System.out.println("FromTop: " + row.size());
-            bottom.setSuspend(false);
-            bottom.notify();
-        }
+            // bottom.setSuspend(false);
+            // bottom.notify();
+        // }
     }
 
     public void run() {
