@@ -6,16 +6,26 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.util.Iterator;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class IOPuzzle extends IOFile {
 
     private static Charset charset = StandardCharsets.UTF_8;
+    private Puzzle puzzle;
+    private String outpath;
 
-    public IOPuzzle(String path) {
+    public IOPuzzle(String path, String opath) {
         super(path);
+        outpath = opath;
     }
 
-    public Puzzle read() {
+    public Puzzle puzzle() {
+        return puzzle;
+    }
+
+    public void read() {
         Puzzle ret = new Puzzle();
         try (BufferedReader reader = Files.newBufferedReader(toPath(), charset)) {
             String line = null;
@@ -37,10 +47,41 @@ public class IOPuzzle extends IOFile {
         } catch (IOException e) {
             System.err.println(e);
         }
-        return ret;
+        puzzle = ret;
     }
 
     public void write() {
-
+        int row = 0;
+        int col = 0;
+        int size = puzzle.size();
+        String pcomplete = "";
+        Iterator<Piece> it = puzzle().pieces().iterator();
+        Piece temp = it.next();
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(outpath), charset)) {
+            while(!temp.east().equals("VUOTO")) {
+                writer.write(temp.ch());
+                col++;
+                String token = "";
+                if(temp.east().equals("VUOTO")) token = temp.ch() + "\n";
+                else token = temp.ch();
+                pcomplete += token;
+                temp = it.next();
+            }
+            row = size / col;
+            while(it.hasNext()) {
+                writer.write(temp.ch());
+                String token = "";
+                if(temp.east().equals("VUOTO")) token = temp.ch() + "\n";
+                else token = temp.ch();
+                pcomplete += token;
+                temp = it.next();
+            }
+            writer.write("\n\n");
+            writer.write(pcomplete);
+            writer.write("\n\n");
+            writer.write(Integer.toString(row)); writer.write(" "); writer.write(Integer.toString(col));
+        } catch (IOException e) {
+            System.err.println(e);
+        }
     }
 }
