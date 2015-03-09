@@ -22,5 +22,6 @@ public class PuzzleController implements IPuzzleController {
     public void display() {
         view.printPuzzle(model);
         view.printPuzzleText(model);
+        view.outputPuzzle();
     }
 }
