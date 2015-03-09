@@ -7,8 +7,8 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
 
     private SortAlgFromBottom bottom;
 
-    public SortAlgFromTop(Puzzle model, SortAlgFromBottom bot) {
-        super(model);
+    public SortAlgFromTop(Puzzle model, SortAlgFromBottom bot, int size) {
+        super(model, size);
         bottom = bot;
     }
 
@@ -17,7 +17,7 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
         while(it.hasNext()) {
             Piece ret = it.next();
             if(ret.north().equals("VUOTO") && ret.west().equals("VUOTO")) {
-                // size--;
+                size--;
                 return ret;
             }
         }
@@ -62,7 +62,7 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
         Piece first = firstPiece(); // first piece
         Vector<Piece> row = new Vector<Piece>();
         synchronized(bottom) {
-            while(size > halfsize) {
+            while(size > 0) {
                 Vector<Piece> tmp = sortRow(first);
                 row.addAll(tmp);
                 first = nextInCol(tmp.firstElement());

@@ -8,8 +8,8 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 
     private boolean suspend = true;
 
-    public SortAlgFromBottom(Puzzle model) {
-        super(model);
+    public SortAlgFromBottom(Puzzle model, int size) {
+        super(model, size);
     }
 
     public void setSuspend(boolean d) {
@@ -64,6 +64,7 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
     }
 
     public void sort() {
+        int halfsize = size;
         Piece first = firstPiece(); // first piece
         Vector<Piece> row = new Vector<Piece>();
         synchronized(this) {
@@ -81,8 +82,8 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
                     System.err.println(e);
                 }
             }
-            if(row.size() == (halfsize * 2)) puzzle().setPieces(row);
-            else puzzle().pieces().addAll(halfsize, row);
+            // if(row.size() == (halfsize * 2)) puzzle().setPieces(row);
+            puzzle().pieces().addAll(halfsize, row);
             System.out.println("FromBottom: " + row.size());
         }
     }

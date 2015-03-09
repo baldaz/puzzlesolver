@@ -5,29 +5,17 @@ import java.util.Iterator;
 
 public abstract class SortAlg {
 
-    protected static int size;
-    protected static int halfsize;
+    protected int size;
 
     private Puzzle model;
 
-    public SortAlg(Puzzle m) {
+    public SortAlg(Puzzle m, int s) {
         model = m;
+        size = s;
     }
 
     public Puzzle puzzle() {
         return model;
-    }
-
-    public static void setSize(int s) {
-        size = s;
-    }
-
-    public static void setHalfSize(int s) {
-        halfsize = s;
-    }
-
-    public static int size() {
-        return size;
     }
 
     public abstract void sort();
