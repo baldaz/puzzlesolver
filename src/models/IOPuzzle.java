@@ -52,7 +52,7 @@ public class IOPuzzle extends IOFile {
 
     public void write() {
         int row = 0;
-        int col = 0;
+        int col = 1;
         int size = puzzle.size();
         String pcomplete = "";
         Iterator<Piece> it = puzzle().pieces().iterator();
@@ -76,9 +76,11 @@ public class IOPuzzle extends IOFile {
                 pcomplete += token;
                 temp = it.next();
             }
+            writer.write(temp.ch());
+            pcomplete += temp.ch() + "\n";
             writer.write("\n\n");
             writer.write(pcomplete);
-            writer.write("\n\n");
+            writer.write("\n");
             writer.write(Integer.toString(row)); writer.write(" "); writer.write(Integer.toString(col));
         } catch (IOException e) {
             System.err.println(e);
