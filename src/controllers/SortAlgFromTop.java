@@ -6,42 +6,45 @@ import java.util.Iterator;
 public class SortAlgFromTop extends SortAlg implements Runnable {
 
     private SortAlgFromBottom bottom;
+    private Vector<Piece> result = new Vector<Piece>();
 
     public SortAlgFromTop(Puzzle model, SortAlgFromBottom bot, int size) {
         super(model, size);
         bottom = bot;
     }
 
+    public Vector<Piece> result() {
+        return result;
+    }
+
     private Piece firstPiece() {
-        Iterator<Piece> it = puzzle().pieces().iterator();
-        while(it.hasNext()) {
-            Piece ret = it.next();
-            if(ret.north().equals("VUOTO") && ret.west().equals("VUOTO")) {
-                size--;
-                return ret;
+        Piece[] p = puzzle().pieces().toArray(new Piece[puzzle().pieces().size()]);
+        for(int i = 0; i < puzzle().pieces().size(); ++i) {
+            if(p[i].north().equals("VUOTO") && p[i].west().equals("VUOTO")) {
+                subOne();
+                return p[i];
             }
         }
         return null;
     }
 
     private Piece nextInRow(Piece p) {
-        Iterator<Piece> it = puzzle().pieces().iterator();
-        while(it.hasNext()) {
-            Piece ret = it.next();
-            if(ret.id().equals(p.east())) {
-                size--;
-                return ret;
+        Piece[] pa = puzzle().pieces().toArray(new Piece[puzzle().pieces().size()]);
+        for(int i = 0; i < puzzle().pieces().size(); ++i) {
+            if(pa[i].id().equals(p.east())) {
+                subOne();
+                return pa[i];
             }
         }
         return null;
     }
+
     private Piece nextInCol(Piece p) {
-        Iterator<Piece> it = puzzle().pieces().iterator();
-        while(it.hasNext()) {
-            Piece ret = it.next();
-            if(ret.id().equals(p.south())) {
-                size--;
-                return ret;
+        Piece[] pa = puzzle().pieces().toArray(new Piece[puzzle().pieces().size()]);
+        for(int i = 0; i < puzzle().pieces().size(); ++i) {
+            if(pa[i].id().equals(p.south())) {
+                subOne();
+                return pa[i];
             }
         }
         return null;
@@ -61,17 +64,13 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
     public void sort() {
         Piece first = firstPiece(); // first piece
         Vector<Piece> row = new Vector<Piece>();
-        synchronized(puzzle()) {
-            while(size > 0) {
-                Vector<Piece> tmp = sortRow(first);
-                row.addAll(tmp);
-                first = nextInCol(tmp.firstElement());
-                System.out.println("checktop");
-            }
-            puzzle().pieces().addAll(0, row);
-            bottom.setSuspend(false);
-            puzzle().notify();
+        while(size() > 0) {
+            Vector<Piece> tmp = sortRow(first);
+            row.addAll(tmp);
+            first = nextInCol(tmp.firstElement());
+            System.out.println("checktop");
         }
+        result = row;
         System.out.println("FromTop: " + row.size());
     }
 

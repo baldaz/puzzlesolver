@@ -38,7 +38,12 @@ public class PuzzleController implements IPuzzleController {
         } catch(InterruptedException e) {
             System.err.println(e);
         }
-        model.pieces().setSize(msize);
+        // model.pieces().setSize(msize);
+        System.out.println(alg.size());
+        System.out.println(algb.size());
+        Vector<Piece> end = alg.result();
+        end.addAll(algb.result());
+        model.setPieces(end);
     }
 
     public void display() {
