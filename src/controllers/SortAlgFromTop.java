@@ -1,7 +1,6 @@
 package puzzlesolver;
 
 import java.util.Vector;
-import java.util.Iterator;
 
 public class SortAlgFromTop extends SortAlg implements Runnable {
 
@@ -68,7 +67,7 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
             Vector<Piece> tmp = sortRow(first);
             row.addAll(tmp);
             first = nextInCol(tmp.firstElement());
-            System.out.println("checktop");
+            System.out.println("topThread");
         }
         result = row;
         System.out.println("FromTop: " + row.size());

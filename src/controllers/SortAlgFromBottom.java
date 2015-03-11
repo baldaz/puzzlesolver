@@ -1,7 +1,6 @@
 package puzzlesolver;
 
 import java.util.Vector;
-import java.util.Iterator;
 import java.util.Collections;
 
 public class SortAlgFromBottom extends SortAlg implements Runnable {
@@ -74,7 +73,7 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
             Vector<Piece> tmp = sortRow(first);
             row.addAll(tmp);
             first = nextInCol(tmp.firstElement());
-            System.out.println("checkbottom");
+            System.out.println("botThread");
         }
         Collections.reverse(row);
         result = row;
