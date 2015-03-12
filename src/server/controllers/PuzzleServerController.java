@@ -2,19 +2,14 @@ package puzzlesolver;
 
 // This class will contain sorting logic of the puzzle
 import java.util.Vector;
-import java.util.Iterator;
+import java.rmi.*;
+import java.rmi.server.*;
 
-public class PuzzleController implements IPuzzleController {
+public class PuzzleServerController extends UnicastRemoteObject implements IPuzzleServerController {
 
-    private Puzzle model;
-    private IPuzzleView view;
+    public PuzzleServerController() throws RemoteException {}
 
-    public PuzzleController(Puzzle m, IPuzzleView v) {
-        model = m;
-        view = v;
-    }
-
-    public void sort() {
+    public Puzzle sort(Puzzle model) throws RemoteException {
         int jump = 0;
         int msize = model.size();
         int hsize = 0;
@@ -27,7 +22,7 @@ public class PuzzleController implements IPuzzleController {
             jump = hsize - 2;
         }
         SortAlgFromBottom botres = new SortAlgFromBottom(model, hsize, jump);
-        SortAlgFromTop topres = new SortAlgFromTop(model, botres, msize / 2);
+        SortAlgFromTop topres = new SortAlgFromTop(model, msize / 2);
         Thread top = new Thread(topres);
         Thread bot = new Thread(botres);
         top.start();
@@ -44,11 +39,6 @@ public class PuzzleController implements IPuzzleController {
         Vector<Piece> end = topres.result();
         end.addAll(botres.result());
         model.setPieces(end);
-    }
-
-    public void display() {
-        // view.printPuzzle(model);
-        view.printPuzzleText(model);
-        view.outputPuzzle();
+        return model;
     }
 }

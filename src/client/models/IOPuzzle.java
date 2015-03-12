@@ -25,6 +25,10 @@ public class IOPuzzle extends IOFile {
         return puzzle;
     }
 
+    public void setPuzzle(Puzzle p) {
+        puzzle = p;
+    }
+
     public void read() {
         Puzzle ret = new Puzzle();
         try (BufferedReader reader = Files.newBufferedReader(toPath(), charset)) {

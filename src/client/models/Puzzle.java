@@ -2,8 +2,9 @@ package puzzlesolver;
 
 import java.util.Vector;
 import java.util.Iterator;
+import java.io.Serializable;
 
-public class Puzzle {
+public class Puzzle implements Serializable {
 
     private Vector<Piece> pieces;
 

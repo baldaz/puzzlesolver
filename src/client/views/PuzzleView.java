@@ -17,6 +17,10 @@ public class PuzzleView implements IPuzzleView {
         return io.puzzle();
     }
 
+    public void updatePuzzle(Puzzle p) {
+        io.setPuzzle(p);
+    }
+
     public void inputPuzzle() {
         io.read();
     }

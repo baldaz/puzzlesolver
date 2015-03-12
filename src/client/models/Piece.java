@@ -1,6 +1,7 @@
 package puzzlesolver;
+import java.io.Serializable;
 
-public class Piece {
+public class Piece implements Serializable {
 
   private String id;
   private String ch;
