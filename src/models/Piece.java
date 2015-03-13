@@ -1,6 +1,6 @@
 package puzzlesolver;
 
-public class Piece {
+public class Piece implements IPiece {
 
   private String id;
   private String ch;
@@ -40,9 +40,5 @@ public class Piece {
 
   public String west() {
     return west;
-  }
-
-  public String toString() {
-    return id + " " + ch + " " + north + " " + east + " " + south + " " + west;
   }
 }

@@ -13,8 +13,8 @@ import java.nio.file.Paths;
 public class IOPuzzle extends IOFile {
 
     private static Charset charset = StandardCharsets.UTF_8;
-    private Puzzle puzzle;
-    private String outpath;
+    private Puzzle puzzle = new Puzzle();
+    private String outpath = new String("");
 
     public IOPuzzle(String path, String opath) {
         super(path);

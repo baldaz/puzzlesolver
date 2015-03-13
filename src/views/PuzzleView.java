@@ -3,8 +3,6 @@ package puzzlesolver;
 import java.util.Vector;
 import java.util.Iterator;
 
-// Here i'll make output to file logic
-
 public class PuzzleView implements IPuzzleView {
 
     private IOPuzzle io;
@@ -23,10 +21,6 @@ public class PuzzleView implements IPuzzleView {
 
     public void outputPuzzle() {
         io.write();
-    }
-
-    public void printPuzzle(Puzzle p) {
-        System.out.println(p);
     }
 
     public void printPuzzleText(Puzzle p) {

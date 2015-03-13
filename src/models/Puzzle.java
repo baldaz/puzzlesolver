@@ -1,7 +1,6 @@
 package puzzlesolver;
 
 import java.util.Vector;
-import java.util.Iterator;
 
 public class Puzzle {
 
@@ -25,13 +24,5 @@ public class Puzzle {
 
     public void setPieces(Vector<Piece> pcs) {
         pieces = pcs;
-    }
-
-    public String toString() {
-        String ret = "Puzzle pieces:\n";
-        Iterator it = pieces.iterator();
-        while(it.hasNext())
-            ret += it.next().toString() + "\n";
-        return ret;
     }
 }
