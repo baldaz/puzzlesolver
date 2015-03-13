@@ -2,9 +2,8 @@ package puzzlesolver;
 
 public abstract class SortAlg {
 
-    private int size;
-
     private Puzzle model;
+    private int size;
 
     public SortAlg(Puzzle m, int s) {
         model = m;

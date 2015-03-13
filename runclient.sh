@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ -z $1  || -z $2 || -z $3 ]]; then
-    echo "Missing parameters.";
+    echo "Missing parameters(input / output / server name).";
     exit;
 else
     make Client

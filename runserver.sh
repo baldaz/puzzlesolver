@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ -z $1 ]]; then
-    echo "Missing parameters.";
+    echo "Missing server name.";
     exit;
 else
     make Server
