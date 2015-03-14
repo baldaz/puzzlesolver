@@ -13,8 +13,8 @@ import java.nio.file.Paths;
 public class IOPuzzle extends IOFile {
 
     private static Charset charset = StandardCharsets.UTF_8;
-    private Puzzle puzzle;
-    private String outpath;
+    private Puzzle puzzle = new Puzzle();
+    private String outpath = new String("");
 
     public IOPuzzle(String path, String opath) {
         super(path);
@@ -26,7 +26,6 @@ public class IOPuzzle extends IOFile {
     }
 
     public void read() {
-        Puzzle ret = new Puzzle();
         try (BufferedReader reader = Files.newBufferedReader(toPath(), charset)) {
             String line = null;
             while ((line = reader.readLine()) != null) {
@@ -40,14 +39,13 @@ public class IOPuzzle extends IOFile {
                         String st = input[4];
                         String wt = input[5];
                         Piece p = new Piece(id, ch, nt, et, st, wt);
-                        ret.addPiece(p);
+                        puzzle.addPiece(p);
                     }
                 }
             }
         } catch (IOException e) {
             System.err.println(e);
         }
-        puzzle = ret;
     }
 
     public void write() {

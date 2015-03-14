@@ -5,12 +5,10 @@ import java.util.Iterator;
 
 public class SortAlgFromTop extends SortAlg implements Runnable {
 
-    private SortAlgFromBottom bottom;
     private Vector<Piece> result = new Vector<Piece>();
 
-    public SortAlgFromTop(Puzzle model, SortAlgFromBottom bot, int size) {
+    public SortAlgFromTop(Puzzle model, int size) {
         super(model, size);
-        bottom = bot;
     }
 
     public Vector<Piece> result() {

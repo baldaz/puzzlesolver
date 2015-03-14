@@ -25,10 +25,6 @@ public class PuzzleView implements IPuzzleView {
         io.write();
     }
 
-    public void printPuzzle(Puzzle p) {
-        System.out.println(p);
-    }
-
     public void printPuzzleText(Puzzle p) {
         Vector<Piece> puzzle = p.pieces();
         Iterator<Piece> it = puzzle.iterator();

@@ -6,17 +6,10 @@ import java.util.Collections;
 
 public class SortAlgFromBottom extends SortAlg implements Runnable {
 
-    private boolean suspend = true;
-    private int jump;
     private Vector<Piece> result = new Vector<Piece>();
 
-    public SortAlgFromBottom(Puzzle model, int size, int jmp) {
+    public SortAlgFromBottom(Puzzle model, int size) {
         super(model, size);
-        jump = jmp;
-    }
-
-    public void setSuspend(boolean d) {
-        suspend = d;
     }
 
     public Vector<Piece> result() {
