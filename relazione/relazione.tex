@@ -15,6 +15,16 @@
 \maketitle
 \begingroup
 \let\clearpage\relax
-\section*{INTRODUZIONE}
+\section*{ORGANIZZAZIONE E SCELTE IMPLEMENTATIVE}
+\section*{ALGORITMO DI RICOSTRUZIONE}
+L'algoritmo di risoluzione implementato nella classe SortAlgSeq, derivata dalla classe base astratta SortAlg, è appunto un algoritmo di risoluzione sequenziale, e si può riassumere in 3 passi:
+\begin{enumerate}
+    \item
+    Localizzazione del primo pezzo del puzzle, che corrisponde al pezzo avente \lq\lq VUOTO\rq\rq a nord e ad ovest.
+    \item
+    Inizio ciclo: ordina la riga a partire dal primo pezzo
+    \item
+    Ricerca del pezzo a sud del primo pezzo della nuova riga ora ordinata, se il pezzo a sud non esiste e troviamo dunque \lq\lq VUOTO\rq\rq, il ciclo si ferma in quanto tutte le righe sono quindi già state ordinate, altrimenti si ripete (1) utilizzando il \lq\lq nuovo\rq\rq primo pezzo.
+\end{enumerate}
 \endgroup
 \end{document}
