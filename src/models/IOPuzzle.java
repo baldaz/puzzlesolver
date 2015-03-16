@@ -13,16 +13,9 @@ import java.nio.file.Paths;
 public class IOPuzzle extends IOFile {
 
     private static Charset charset = StandardCharsets.UTF_8;
-    private Puzzle puzzle = new Puzzle();
-    private String outpath = new String("");
 
     public IOPuzzle(String path, String opath) {
-        super(path);
-        outpath = opath;
-    }
-
-    public Puzzle puzzle() {
-        return puzzle;
+        super(path, opath);
     }
 
     public void read() {
@@ -39,7 +32,7 @@ public class IOPuzzle extends IOFile {
                         String st = input[4];
                         String wt = input[5];
                         Piece p = new Piece(id, ch, nt, et, st, wt);
-                        puzzle.addPiece(p);
+                        puzzle().addPiece(p);
                     }
                 }
             }
@@ -51,11 +44,11 @@ public class IOPuzzle extends IOFile {
     public void write() {
         int row = 0;
         int col = 1;
-        int size = puzzle.size();
+        int size = puzzle().size();
         String pcomplete = "";
         Iterator<Piece> it = puzzle().pieces().iterator();
         Piece temp = it.next();
-        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(outpath), charset)) {
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(outpath()), charset)) {
             while(!temp.east().equals("VUOTO")) {
                 writer.write(temp.ch());
                 col++;

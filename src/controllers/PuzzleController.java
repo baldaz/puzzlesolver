@@ -13,8 +13,7 @@ public class PuzzleController implements IPuzzleController {
         alg.sort();
     }
 
-    public void display() {
-        view.printPuzzleText(view.puzzle());
+    public void output() {
         view.outputPuzzle();
     }
 }

@@ -5,9 +5,9 @@ import java.util.Iterator;
 
 public class PuzzleView implements IPuzzleView {
 
-    private IOPuzzle io;
+    private IOFile io;
 
-    public PuzzleView(IOPuzzle io) {
+    public PuzzleView(IOFile io) {
         this.io = io;
     }
 
@@ -21,13 +21,5 @@ public class PuzzleView implements IPuzzleView {
 
     public void outputPuzzle() {
         io.write();
-    }
-
-    public void printPuzzleText(Puzzle p) {
-        Vector<Piece> puzzle = p.pieces();
-        Iterator<Piece> it = puzzle.iterator();
-        while(it.hasNext())
-            System.out.print(it.next().ch());
-        System.out.println();
     }
 }
