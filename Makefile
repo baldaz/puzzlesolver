@@ -8,7 +8,7 @@ BIN = -g -classpath bin -d bin
 default: PuzzleSolver
 
 Piece.class:
-	$(JC) $(BIN) src/models/Piece.java src/models/IPiece.java
+	$(JC) $(BIN) src/models/Piece.java
 
 Puzzle.class: Piece.class
 	$(JC) $(BIN) src/models/Puzzle.java

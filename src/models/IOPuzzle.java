@@ -10,13 +10,29 @@ import java.util.Iterator;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * MVC Pattern File model representing an input and output file for puzzles, derived from abstract IOFile.
+ */
+
 public class IOPuzzle extends IOFile {
 
-    private static Charset charset = StandardCharsets.UTF_8;
+    private static Charset charset = StandardCharsets.UTF_8; // UTF-8 encoding for input and output
+
+    /**
+     * Constructor
+     * @param path, path of the input file.
+     * @param opath, path of the output file.
+     */
 
     public IOPuzzle(String path, String opath) {
         super(path, opath);
     }
+
+    /**
+     * Implementation of abstract method void read() from IOFile.
+     * Read data from the input file and populate Puzzle reference from super class IOFile.
+     * @throws IOException when the input file set by contructor is empty or corrupted.
+     */
 
     public void read() {
         try (BufferedReader reader = Files.newBufferedReader(toPath(), charset)) {
@@ -40,6 +56,13 @@ public class IOPuzzle extends IOFile {
             System.err.println(e);
         }
     }
+
+    /**
+     * Implementation of abstract method void write() from IOFile.
+     * Write data from Puzzle reference from super class IOFile and write it into the file placed in outpath parameter in the
+     * constructor.
+     * @throws IOException when the output file set by constructor seems to be corrupted or some other problems occured.
+     */
 
     public void write() {
         int row = 0;

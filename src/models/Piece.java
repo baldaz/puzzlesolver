@@ -1,6 +1,11 @@
 package puzzlesolver;
 
-public class Piece implements IPiece {
+/**
+ * MVC Pattern piece model representing a piece of a text puzzle, formed by an ID, the character it represents, and nearby
+ * pieces informations at his four cardinal points, provided with getters.
+ */
+
+public class Piece {
 
   private String id;
   private String ch;
@@ -8,6 +13,16 @@ public class Piece implements IPiece {
   private String east;
   private String south;
   private String west;
+
+  /**
+   * Constructor
+   * @param i ID of the piece.
+   * @param c character the piece represent.
+   * @param n local information of the piece at north of the current, represent his ID.
+   * @param e local information of the piece at east of the current, represent his ID.
+   * @param s local information of the piece at south of the current, represent his ID.
+   * @param w local information of the piece at west of the current, represent his ID.
+   */
 
   public Piece(String i, String c, String n, String e, String s, String w){
     id = i;
