@@ -8,10 +8,10 @@ import java.util.Vector;
 
 public class Puzzle {
 
-    private Vector<Piece> pieces;
+    private Vector<IPiece> pieces;
 
     public Puzzle() {
-        pieces = new Vector<Piece>();
+        pieces = new Vector<IPiece>();
     }
 
     /**
@@ -27,7 +27,7 @@ public class Puzzle {
      * @param p, reference to a Piece.
      */
 
-    public void addPiece(Piece p) {
+    public void addPiece(IPiece p) {
         pieces.add(p);
     }
 
@@ -35,7 +35,7 @@ public class Puzzle {
      * @return A Vector of pieces representing the puzzle.
      */
 
-    public Vector<Piece> pieces() {
+    public Vector<IPiece> pieces() {
         return pieces;
     }
 
@@ -44,7 +44,7 @@ public class Puzzle {
      * @param pcs, a Vector of pieces that will replace the current Vector.
      */
 
-    public void setPieces(Vector<Piece> pcs) {
+    public void setPieces(Vector<IPiece> pcs) {
         pieces = pcs;
     }
 }

@@ -47,7 +47,7 @@ public class IOPuzzle extends IOFile {
                         String et = input[3];
                         String st = input[4];
                         String wt = input[5];
-                        Piece p = new Piece(id, ch, nt, et, st, wt);
+                        IPiece p = new Piece(id, ch, nt, et, st, wt);
                         puzzle().addPiece(p);
                     }
                 }
@@ -69,29 +69,29 @@ public class IOPuzzle extends IOFile {
         int col = 1;
         int size = puzzle().size();
         String pcomplete = "";
-        Iterator<Piece> it = puzzle().pieces().iterator();
-        Piece temp = it.next();
+        Iterator<IPiece> it = puzzle().pieces().iterator();
+        Piece temp = (Piece) it.next();
         try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(outpath()), charset)) {
-            while(!temp.east().equals("VUOTO")) {
-                writer.write(temp.ch());
+            while(!temp.eastBorder()) {
+                writer.write(temp.toString());
                 col++;
                 String token = "";
-                if(temp.east().equals("VUOTO")) token = temp.ch() + "\n";
-                else token = temp.ch();
+                if(temp.eastBorder()) token = temp + "\n";
+                else token = temp.toString();
                 pcomplete += token;
-                temp = it.next();
+                temp = (Piece) it.next();
             }
             row = size / col;
             while(it.hasNext()) {
-                writer.write(temp.ch());
+                writer.write(temp.toString());
                 String token = "";
-                if(temp.east().equals("VUOTO")) token = temp.ch() + "\n";
-                else token = temp.ch();
+                if(temp.eastBorder()) token = temp + "\n";
+                else token = temp.toString();
                 pcomplete += token;
-                temp = it.next();
+                temp = (Piece) it.next();
             }
-            writer.write(temp.ch());
-            pcomplete += temp.ch() + "\n";
+            writer.write(temp.toString());
+            pcomplete += temp + "\n";
             writer.write("\n\n");
             writer.write(pcomplete);
             writer.write("\n");

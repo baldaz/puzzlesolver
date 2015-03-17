@@ -26,11 +26,11 @@ public class SortAlgSeq extends SortAlg {
      * @return returns a piece object, representing the first piece of the puzzle.
      */
 
-    private Piece firstPiece() {
-        Iterator<Piece> it = puzzle().pieces().iterator();
+    private IPiece firstPiece() {
+        Iterator<IPiece> it = puzzle().pieces().iterator();
         while(it.hasNext()) {
-            Piece ret = it.next();
-            if(ret.north().equals("VUOTO") && ret.west().equals("VUOTO")) return ret;
+            IPiece ret = it.next();
+            if(ret.northBorder() && ret.westBorder()) return ret;
         }
         return null;
     }
@@ -41,11 +41,11 @@ public class SortAlgSeq extends SortAlg {
      * @return returns a piece object, representing the east piece of the given piece.
      */
 
-    private Piece nextInRow(Piece p) {
-        Iterator<Piece> it = puzzle().pieces().iterator();
+    private IPiece nextInRow(IPiece p) {
+        Iterator<IPiece> it = puzzle().pieces().iterator();
         while(it.hasNext()) {
-            Piece ret = it.next();
-            if(ret.id().equals(p.east())) return ret;
+            IPiece ret = it.next();
+            if(p.eastSide(ret)) return ret;
         }
         return null;
     }
@@ -56,11 +56,11 @@ public class SortAlgSeq extends SortAlg {
      * @return returns a piece object, representing the south piece of the given piece.
      */
 
-    private Piece nextInCol(Piece p) {
-        Iterator<Piece> it = puzzle().pieces().iterator();
+    private IPiece nextInCol(IPiece p) {
+        Iterator<IPiece> it = puzzle().pieces().iterator();
         while(it.hasNext()) {
-            Piece ret = it.next();
-            if(ret.id().equals(p.south())) return ret;
+            IPiece ret = it.next();
+            if(p.southSide(ret)) return ret;
         }
         return null;
     }
@@ -71,10 +71,10 @@ public class SortAlgSeq extends SortAlg {
      * @return returns a vector of piece, representing the sorted row.
      */
 
-    private Vector<Piece> sortRow(Piece p) {
-        Vector<Piece> ret = new Vector<Piece>();
+    private Vector<IPiece> sortRow(IPiece p) {
+        Vector<IPiece> ret = new Vector<IPiece>();
         ret.add(p);
-        Piece nxt = nextInRow(p);
+        IPiece nxt = nextInRow(p);
         while(nxt != null) {
             ret.add(nxt);
             nxt = nextInRow(nxt);
@@ -92,12 +92,12 @@ public class SortAlgSeq extends SortAlg {
 
     public void sort() {
         boolean loop = true;
-        Piece first = firstPiece(); // first piece
-        Vector<Piece> row = new Vector<Piece>();
+        IPiece first = firstPiece(); // first piece
+        Vector<IPiece> row = new Vector<IPiece>();
         while(loop) {
-            Vector<Piece> tmp = sortRow(first);
+            Vector<IPiece> tmp = sortRow(first);
             row.addAll(tmp);
-            if(first.south().equals("VUOTO")) loop = false;
+            if(first.southBorder()) loop = false;
             else first = nextInCol(tmp.firstElement());
         }
         puzzle().setPieces(row);
