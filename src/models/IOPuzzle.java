@@ -10,20 +10,29 @@ import java.util.Iterator;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * MVC Pattern File model representing an input and output file for puzzles, derived from abstract IOFile.
+ */
+
 public class IOPuzzle extends IOFile {
 
-    private static Charset charset = StandardCharsets.UTF_8;
-    private Puzzle puzzle = new Puzzle();
-    private String outpath = new String("");
+    private static Charset charset = StandardCharsets.UTF_8; // UTF-8 encoding for input and output
+
+    /**
+     * Constructor
+     * @param path, path of the input file.
+     * @param opath, path of the output file.
+     */
 
     public IOPuzzle(String path, String opath) {
-        super(path);
-        outpath = opath;
+        super(path, opath);
     }
 
-    public Puzzle puzzle() {
-        return puzzle;
-    }
+    /**
+     * Implementation of abstract method void read() from IOFile.
+     * Read data from the input file and populate Puzzle reference from super class IOFile.
+     * @throws IOException when the input file set by contructor is empty or corrupted.
+     */
 
     public void read() {
         try (BufferedReader reader = Files.newBufferedReader(toPath(), charset)) {
@@ -38,8 +47,8 @@ public class IOPuzzle extends IOFile {
                         String et = input[3];
                         String st = input[4];
                         String wt = input[5];
-                        Piece p = new Piece(id, ch, nt, et, st, wt);
-                        puzzle.addPiece(p);
+                        IPiece p = new Piece(id, ch, nt, et, st, wt);
+                        puzzle().addPiece(p);
                     }
                 }
             }
@@ -48,34 +57,41 @@ public class IOPuzzle extends IOFile {
         }
     }
 
+    /**
+     * Implementation of abstract method void write() from IOFile.
+     * Write data from Puzzle reference from super class IOFile and write it into the file placed in outpath parameter in the
+     * constructor.
+     * @throws IOException when the output file set by constructor seems to be corrupted or some other problems occured.
+     */
+
     public void write() {
         int row = 0;
         int col = 1;
-        int size = puzzle.size();
+        int size = puzzle().size();
         String pcomplete = "";
-        Iterator<Piece> it = puzzle().pieces().iterator();
-        Piece temp = it.next();
-        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(outpath), charset)) {
-            while(!temp.east().equals("VUOTO")) {
-                writer.write(temp.ch());
+        Iterator<IPiece> it = puzzle().pieces().iterator();
+        Piece temp = (Piece) it.next();
+        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(outpath()), charset)) {
+            while(!temp.eastBorder()) {
+                writer.write(temp.toString());
                 col++;
                 String token = "";
-                if(temp.east().equals("VUOTO")) token = temp.ch() + "\n";
-                else token = temp.ch();
+                if(temp.eastBorder()) token = temp + "\n";
+                else token = temp.toString();
                 pcomplete += token;
-                temp = it.next();
+                temp = (Piece) it.next();
             }
             row = size / col;
             while(it.hasNext()) {
-                writer.write(temp.ch());
+                writer.write(temp.toString());
                 String token = "";
-                if(temp.east().equals("VUOTO")) token = temp.ch() + "\n";
-                else token = temp.ch();
+                if(temp.eastBorder()) token = temp + "\n";
+                else token = temp.toString();
                 pcomplete += token;
-                temp = it.next();
+                temp = (Piece) it.next();
             }
-            writer.write(temp.ch());
-            pcomplete += temp.ch() + "\n";
+            writer.write(temp.toString());
+            pcomplete += temp + "\n";
             writer.write("\n\n");
             writer.write(pcomplete);
             writer.write("\n");

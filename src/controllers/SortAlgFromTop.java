@@ -3,22 +3,40 @@ package puzzlesolver;
 import java.util.Vector;
 import java.util.Iterator;
 
+/**
+ * MVC Pattern sorting class derived from abstract base SortAlg, contains the override of the method void sort()
+ * and the private utility methods used by the algorithm.
+ */
+
 public class SortAlgFromTop extends SortAlg implements Runnable {
 
-    private Vector<Piece> result = new Vector<Piece>();
+    private Vector<IPiece> result = new Vector<IPiece>();
+
+    /**
+     * Constructor
+     * @param model, puzzle object to sort
+     * @param size, size of the part of the puzzle that must be sorted
+     */
 
     public SortAlgFromTop(Puzzle model, int size) {
         super(model, size);
     }
 
-    public Vector<Piece> result() {
+    public Vector<IPiece> result() {
         return result;
     }
 
-    private Piece firstPiece() {
-        Piece[] p = puzzle().pieces().toArray(new Piece[puzzle().pieces().size()]);
+    /**
+     * First piece scouter method. Private method that find the first piece of the puzzle iterating through the vector of piece
+     * that represent the puzzle itself using a loop that check if the current piece has north and west sides setted at "VUOTO",
+     * else returns null.
+     * @return returns a piece object, representing the first piece of the puzzle.
+     */
+
+    private IPiece firstPiece() {
+        IPiece[] p = puzzle().pieces().toArray(new IPiece[puzzle().pieces().size()]);
         for(int i = 0; i < puzzle().pieces().size(); ++i) {
-            if(p[i].north().equals("VUOTO") && p[i].west().equals("VUOTO")) {
+            if(p[i].northBorder() && p[i].westBorder()) {
                 subOne();
                 return p[i];
             }
@@ -26,10 +44,16 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
         return null;
     }
 
-    private Piece nextInRow(Piece p) {
-        Piece[] pa = puzzle().pieces().toArray(new Piece[puzzle().pieces().size()]);
+    /**
+     * Private method that find the piece whose ID equals the east information of a given piece.
+     * @param p, piece object.
+     * @return returns a piece object, representing the east piece of the given piece.
+     */
+
+    private IPiece nextInRow(IPiece p) {
+        IPiece[] pa = puzzle().pieces().toArray(new IPiece[puzzle().pieces().size()]);
         for(int i = 0; i < puzzle().pieces().size(); ++i) {
-            if(pa[i].id().equals(p.east())) {
+            if(p.eastSide(pa[i])) {
                 subOne();
                 return pa[i];
             }
@@ -37,10 +61,16 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
         return null;
     }
 
-    private Piece nextInCol(Piece p) {
-        Piece[] pa = puzzle().pieces().toArray(new Piece[puzzle().pieces().size()]);
+    /**
+     * Private method that find the piece whose ID equals the south information of a given piece.
+     * @param p, piece object.
+     * @return returns a piece object, representing the south piece of the given piece.
+     */
+
+    private IPiece nextInCol(IPiece p) {
+        IPiece[] pa = puzzle().pieces().toArray(new IPiece[puzzle().pieces().size()]);
         for(int i = 0; i < puzzle().pieces().size(); ++i) {
-            if(pa[i].id().equals(p.south())) {
+            if(p.southSide(pa[i])) {
                 subOne();
                 return pa[i];
             }
@@ -48,10 +78,16 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
         return null;
     }
 
-    private Vector<Piece> sortRow(Piece p) {
-        Vector<Piece> ret = new Vector<Piece>();
+    /**
+     * Private method that sort a row of the puzzle, starting from a given piece by using nextInRow() methods in a loop.
+     * @param p, piece object.
+     * @return returns a vector of piece, representing the sorted row.
+     */
+
+    private Vector<IPiece> sortRow(IPiece p) {
+        Vector<IPiece> ret = new Vector<IPiece>();
         ret.add(p);
-        Piece nxt = nextInRow(p);
+        IPiece nxt = nextInRow(p);
         while(nxt != null) {
             ret.add(nxt);
             nxt = nextInRow(nxt);
@@ -59,11 +95,19 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
         return ret;
     }
 
+    /**
+     * Public method that sort the puzzle by using private methods to find the first piece and the following ones.
+     * After locating the first piece, through a while loop, this method sort every row giving at every cycle the first piece
+     * of the current row to sort, by calling nextInCol on the first piece of the previous row (already sorted) until a piece
+     * with south information equals to "VUOTO" is found. In the end it sets the new vector of Piece created to the puzzle
+     * member.
+     */
+
     public void sort() {
-        Piece first = firstPiece(); // first piece
-        Vector<Piece> row = new Vector<Piece>();
+        IPiece first = firstPiece(); // first piece
+        Vector<IPiece> row = new Vector<IPiece>();
         while(size() > 0) {
-            Vector<Piece> tmp = sortRow(first);
+            Vector<IPiece> tmp = sortRow(first);
             row.addAll(tmp);
             first = nextInCol(tmp.firstElement());
             System.out.println("checktop");

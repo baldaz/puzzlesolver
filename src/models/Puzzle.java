@@ -1,37 +1,50 @@
 package puzzlesolver;
 
 import java.util.Vector;
-import java.util.Iterator;
+
+/**
+ * MVC Pattern, puzzle model representing a text puzzle formed by a Vector of pieces.
+ */
 
 public class Puzzle {
 
-    private Vector<Piece> pieces;
+    private Vector<IPiece> pieces;
 
     public Puzzle() {
-        pieces = new Vector<Piece>();
+        pieces = new Vector<IPiece>();
     }
+
+    /**
+     * @return size, an int value representing size of the puzzle.
+     */
 
     public int size() {
         return pieces.size();
     }
 
-    public void addPiece(Piece p) {
+    /**
+     * Add a piece to the Vector of pieces.
+     * @param p, reference to a Piece.
+     */
+
+    public void addPiece(IPiece p) {
         pieces.add(p);
     }
 
-    public Vector<Piece> pieces() {
+    /**
+     * @return A Vector of pieces representing the puzzle.
+     */
+
+    public Vector<IPiece> pieces() {
         return pieces;
     }
 
-    public void setPieces(Vector<Piece> pcs) {
-        pieces = pcs;
-    }
+    /**
+     * Set a new puzzle.
+     * @param pcs, a Vector of pieces that will replace the current Vector.
+     */
 
-    public String toString() {
-        String ret = "Puzzle pieces:\n";
-        Iterator it = pieces.iterator();
-        while(it.hasNext())
-            ret += it.next().toString() + "\n";
-        return ret;
+    public void setPieces(Vector<IPiece> pcs) {
+        pieces = pcs;
     }
 }

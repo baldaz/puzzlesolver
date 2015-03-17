@@ -1,14 +1,27 @@
 package puzzlesolver;
 
-// This class will contain sorting logic of the puzzle
 import java.util.Vector;
 
+/**
+ * MVC Pattern controller class, implementation of IPuzzleController interface.
+ */
+
 public class PuzzleController implements IPuzzleController {
+
     private IPuzzleView view;
+
+    /**
+     * Constructor
+     * @param v IPuzzleView type representing a puzzle view, provides input and output features.
+     */
 
     public PuzzleController(IPuzzleView v) {
         view = v;
     }
+
+    /**
+     * Sorting method, sorts the puzzle using SortAlg type object.
+     */
 
     public void sort() {
         int jump = 0;
@@ -36,13 +49,16 @@ public class PuzzleController implements IPuzzleController {
         }
         System.out.println(alg.size());
         System.out.println(algb.size());
-        Vector<Piece> end = alg.result();
+        Vector<IPiece> end = alg.result();
         end.addAll(algb.result());
         view.puzzle().setPieces(end);
     }
 
-    public void display() {
-        view.printPuzzleText(view.puzzle());
+    /**
+     * Output sorted puzzle to the view.
+     */
+
+    public void output() {
         view.outputPuzzle();
     }
 }
