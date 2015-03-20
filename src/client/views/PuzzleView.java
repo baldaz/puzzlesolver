@@ -3,13 +3,20 @@ package puzzlesolver;
 import java.util.Vector;
 import java.util.Iterator;
 
-// Here i'll make output to file logic
+/**
+ * MVC Pattern view class, implementation of IPuzzleView interface.
+ */
 
 public class PuzzleView implements IPuzzleView {
 
-    private IOPuzzle io;
+    private IOFile io;
 
-    public PuzzleView(IOPuzzle io) {
+    /**
+     * Constructor
+     * @param io IOFile type representing the puzzle file, provides input and output features.
+     */
+
+    public PuzzleView(IOFile io) {
         this.io = io;
     }
 
@@ -17,27 +24,23 @@ public class PuzzleView implements IPuzzleView {
         return io.puzzle();
     }
 
-    public void updatePuzzle(Puzzle p) {
-        io.setPuzzle(p);
-    }
+    /**
+     * Read input from file.
+     */
 
     public void inputPuzzle() {
         io.read();
     }
 
+    /**
+     * Write output to file.
+     */
+
     public void outputPuzzle() {
         io.write();
     }
 
-    public void printPuzzle(Puzzle p) {
-        System.out.println(p);
-    }
-
-    public void printPuzzleText(Puzzle p) {
-        Vector<Piece> puzzle = p.pieces();
-        Iterator<Piece> it = puzzle.iterator();
-        while(it.hasNext())
-            System.out.print(it.next().ch());
-        System.out.println();
+    public void updatePuzzle(Puzzle p) {
+        io.setPuzzle(p);
     }
 }

@@ -21,7 +21,7 @@ public class PuzzleServerController extends UnicastRemoteObject implements IPuzz
             hsize = (msize / 2) + 1;
             jump = hsize - 2;
         }
-        SortAlgFromBottom botres = new SortAlgFromBottom(model, hsize, jump);
+        SortAlgFromBottom botres = new SortAlgFromBottom(model, hsize);
         SortAlgFromTop topres = new SortAlgFromTop(model, msize / 2);
         Thread top = new Thread(topres);
         Thread bot = new Thread(botres);
@@ -36,7 +36,7 @@ public class PuzzleServerController extends UnicastRemoteObject implements IPuzz
         // model.pieces().setSize(msize);
         System.out.println(topres.size());
         System.out.println(botres.size());
-        Vector<Piece> end = topres.result();
+        Vector<IPiece> end = topres.result();
         end.addAll(botres.result());
         model.setPieces(end);
         return model;

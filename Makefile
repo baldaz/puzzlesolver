@@ -11,7 +11,7 @@ default: Server Client
 # server side
 
 SPiece.class:
-	$(JC) $(SBIN) src/server/models/Piece.java
+	$(JC) $(SBIN) src/server/models/Piece.java src/server/models/IPiece.java
 
 SPuzzle.class: SPiece.class
 	$(JC) $(SBIN) src/server/models/Puzzle.java
@@ -36,7 +36,7 @@ Server: Server.class
 # client side
 
 CPiece.class:
-	$(JC) $(CBIN) src/client/models/Piece.java
+	$(JC) $(CBIN) src/client/models/Piece.java src/client/models/IPiece.java
 
 CPuzzle.class: CPiece.class
 	$(JC) $(CBIN) src/client/models/Puzzle.java

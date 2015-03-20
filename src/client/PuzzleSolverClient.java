@@ -11,8 +11,8 @@ public class PuzzleSolverClient {
        IPuzzleView view = new PuzzleView(new IOPuzzle(inp, out));
        view.inputPuzzle();
        Puzzle puzzle = view.puzzle();
-       IPuzzleController controller = new PuzzleController(puzzle, view);
+       IPuzzleController controller = new PuzzleController(view);
        controller.sort(HOST + "/" + hst);
-       controller.display();
+       controller.output();
     }
 }
