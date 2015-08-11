@@ -1,30 +1,66 @@
-\documentclass[10pt,a4paper]{article}
+% Created 2015-08-11 mar 20:16
+\documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{alltt}
 \usepackage{caption}
+\usepackage{hyperref}
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{graphicx}
-\usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage[top=2in, bottom=1.5in, left=0.7in, right=0.7in]{geometry}
+\DeclareCaptionFormat{listing}{\rule{\dimexpr\textwidth+17pt\relax}{0.4}\vskip1pt#1#2#3}
+\captionsetup[lstlisting]{singlelinecheck=false, margin=0pt,
+	font={bf,footnotesize}}
+               
 
-\title{Programmazione concorrente e distribuita 2014-2015. Prima parte}
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+\renewcommand*\oldstylenums[1]{{\fontfamily{fxlj}\selectfont #1}}
+\definecolor{wine-stain}{rgb}{0.5,0,0}
+\hypersetup{colorlinks, linkcolor=wine-stain, linktoc=all}
+\usepackage{lmodern}
+\lstset{basicstyle=\normalfont\ttfamily\small,numberstyle=\small,breaklines=true,frame=tb,tabsize=1,showstringspaces=false,numbers=left,commentstyle=\color{grey},keywordstyle=\color{black}\bfseries,stringstyle=\color{red}}
+\newenvironment{changemargin}[2]{\list{}{\rightmargin#2\leftmargin#1\parsep=0pt\topsep=0pt\partopsep=0pt}\item[]}{\endlist}
+\newenvironment{indentmore}{\begin{changemargin}{1cm}{0cm}}{\end{changemargin}}
 \author{Andrea Giacomo Baldan 579117}
-
+\date{\today}
+\title{Programmazione Concorrente e Distribuita 2014-2015. Prima parte.}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 24.3.1 (Org mode 8.2.10)}}
 \begin{document}
+
 \maketitle
-\begingroup
-\let\clearpage\relax
-\section*{ORGANIZZAZIONE E SCELTE IMPLEMENTATIVE}
-\section*{ALGORITMO DI RICOSTRUZIONE}
-L'algoritmo di risoluzione implementato nella classe SortAlgSeq, derivata dalla classe base astratta SortAlg, è appunto un algoritmo di risoluzione sequenziale, e si può riassumere in 3 passi:
+\tableofcontents
+
+\section{Organizzazione e scelte implementative}
+\label{sec-1}
+Ho scelto di seguire un pattern MVC per la modularità e la separazione logica - output che offre, anche in assenza di interfaccia grafica, nel caso futuro
+in cui venisse implementata, il design pattern scelto agevolerebbe notevolmente il lavoro.
+\subsection{Organizzazione delle classi}
+\label{sec-1-1}
+Le classi sono raggruppate in un package, \textbf{puzzlesolver} e all'esterno la classe \textbf{PuzzleSolver} contiene il \verb~main~ e le chiamate esecutive del programma.
+\section{Principi di OOP}
+\label{sec-2}
+\subsection{Information hiding}
+\label{sec-2-1}
+I campi dati delle classi sono stati dichiarati tutti \verb~private~, accedibili mediante classici metodi \verb~getters~ e \verb~setters~.
+\section{Algoritmo di ricostruzione}
+\label{sec-3}
+L'algoritmo di risoluzione implementato nella classe SortAlgSeq, derivata dalla classe base astratta SortAlg, è appunto un algoritmo di risoluzione 
+sequenziale, e si può riassumere in 3 passi:
 \begin{enumerate}
-    \item
-    Localizzazione del primo pezzo del puzzle, che corrisponde al pezzo avente \lq\lq VUOTO\rq\rq a nord e ad ovest.
-    \item
-    Inizio ciclo: ordina la riga a partire dal primo pezzo
-    \item
-    Ricerca del pezzo a sud del primo pezzo della nuova riga ora ordinata, se il pezzo a sud non esiste e troviamo dunque \lq\lq VUOTO\rq\rq, il ciclo si ferma in quanto tutte le righe sono quindi già state ordinate, altrimenti si ripete (1) utilizzando il \lq\lq nuovo\rq\rq primo pezzo.
+\item Localizzazione del primo pezzo del puzzle, che corrisponde al pezzo avente "VUOTO" a nord e ad ovest.
+\item Inizio ciclo: ordina la riga a partire dal primo pezzo
+\item Ricerca del pezzo a sud del primo pezzo della nuova riga ora ordinata, se il pezzo a sud non esiste e troviamo dunque "VUOTO", il ciclo si ferma 
+in quanto tutte le righe sono quindi già state ordinate, altrimenti si ripete (1) utilizzando il "nuovo" primo pezzo.
 \end{enumerate}
-\endgroup
+\section{Note}
+\label{sec-4}
+Il progetto è stato sviluppato in ambiente linux, utilizzando la JVM versione 1.7.0.
+% Emacs 24.3.1 (Org mode 8.2.10)
 \end{document}

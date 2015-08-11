@@ -1,12 +1,12 @@
 package puzzlesolver;
 
 /**
- * MVC pattern, public interface for a puzzle.
+ * Public interface for a puzzle.
  */
 
 public interface IPuzzleView {
 
-    // simple getter
+    // getter
 
     public Puzzle puzzle();
 

@@ -4,7 +4,7 @@ import java.util.Vector;
 import java.util.Iterator;
 
 /**
- * MVC Pattern sorting class derived from abstract base SortAlg, contains the override of the method void sort()
+ * Sorting class derived from abstract base SortAlg, contains the override of the method void sort()
  * and the private utility methods used by the algorithm.
  */
 
@@ -12,7 +12,7 @@ public class SortAlgSeq extends SortAlg {
 
     /**
      * Constructor
-     * @param model, puzzle object to sort.
+     * @param model puzzle object to sort.
      */
 
     public SortAlgSeq(Puzzle model) {
@@ -37,7 +37,7 @@ public class SortAlgSeq extends SortAlg {
 
     /**
      * Private method that find the piece whose ID equals the east information of a given piece.
-     * @param p, piece object.
+     * @param p piece object.
      * @return returns a piece object, representing the east piece of the given piece.
      */
 
@@ -52,7 +52,7 @@ public class SortAlgSeq extends SortAlg {
 
     /**
      * Private method that find the piece whose ID equals the south information of a given piece.
-     * @param p, piece object.
+     * @param p piece object.
      * @return returns a piece object, representing the south piece of the given piece.
      */
 
@@ -67,7 +67,7 @@ public class SortAlgSeq extends SortAlg {
 
     /**
      * Private method that sort a row of the puzzle, starting from a given piece by using nextInRow() methods in a loop.
-     * @param p, piece object.
+     * @param p piece object.
      * @return returns a vector of piece, representing the sorted row.
      */
 
@@ -83,6 +83,7 @@ public class SortAlgSeq extends SortAlg {
     }
 
     /**
+	 * @override
      * Public method that sort the puzzle by using private methods to find the first piece and the following ones.
      * After locating the first piece, through a while loop, this method sort every row giving at every cycle the first piece
      * of the current row to sort, by calling nextInCol on the first piece of the previous row (already sorted) until a piece

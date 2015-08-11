@@ -1,7 +1,7 @@
 package puzzlesolver;
 
 /**
- * MVC Pattern controller class, implementation of IPuzzleController interface.
+ * Controller class, implementation of IPuzzleController interface.
  */
 
 public class PuzzleController implements IPuzzleController {
@@ -18,6 +18,7 @@ public class PuzzleController implements IPuzzleController {
     }
 
     /**
+	 * @override
      * Sorting method, sorts the puzzle using SortAlg type object.
      */
 
@@ -27,6 +28,7 @@ public class PuzzleController implements IPuzzleController {
     }
 
     /**
+	 * @override
      * Output sorted puzzle to the view.
      */
 

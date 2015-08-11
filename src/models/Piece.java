@@ -1,7 +1,7 @@
 package puzzlesolver;
 
 /**
- * MVC Pattern piece model representing a piece of a text puzzle, formed by an ID, the character it represents, and nearby
+ * Piece model representing a tile of a text puzzle, formed by an identifier, the character it represents, and nearby
  * pieces informations at his four cardinal points, provided with getters.
  */
 
@@ -33,22 +33,24 @@ public class Piece implements IPiece {
     west = w;
   }
 
-  // getter method for ID
+  /**
+   * @return identifier of the piece
+   */
 
   public String id() {
-    return id;
+	  return id;
   }
-
+	
   /**
    * Check if a given piece is the north piece of the current one
    * @param p piece of the puzzle that could be at north of the current one
    * @return returns true if the given piece p is at north of the current one, else false
    */
 
-  public boolean northSide(IPiece p) {
-    Piece pp = (Piece) p;
-    return (pp.id().equals(north));
-  }
+	public boolean northSide(IPiece p) {
+		Piece pp = (Piece) p;
+		return (pp.id().equals(north));
+	}
 
   /**
    * Check if a given piece is the east piece of the current one
@@ -120,6 +122,7 @@ public class Piece implements IPiece {
   }
 
   /**
+   * @override
    * toString override
    * @return returns the character that represent current piece
    */

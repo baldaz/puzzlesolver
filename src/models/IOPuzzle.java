@@ -11,7 +11,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * MVC Pattern File model representing an input and output file for puzzles, derived from abstract IOFile.
+ * File model representing an input and output file for puzzles, derived from abstract IOFile.
  */
 
 public class IOPuzzle extends IOFile {
@@ -20,8 +20,8 @@ public class IOPuzzle extends IOFile {
 
     /**
      * Constructor
-     * @param path, path of the input file.
-     * @param opath, path of the output file.
+     * @param path path of the input file.
+     * @param opath path of the output file.
      */
 
     public IOPuzzle(String path, String opath) {
@@ -34,10 +34,11 @@ public class IOPuzzle extends IOFile {
      * @throws IOException when the input file set by contructor is empty or corrupted.
      */
 
-    public void read() {
+    public void read() throws IOException {
         try (BufferedReader reader = Files.newBufferedReader(toPath(), charset)) {
             String line = null;
             while ((line = reader.readLine()) != null) {
+				// get input line by line
                 if(!line.isEmpty()) {
                     String [] input = line.split("\t");
                     if(input.length == 6) {
@@ -49,7 +50,9 @@ public class IOPuzzle extends IOFile {
                         String wt = input[5];
                         IPiece p = new Piece(id, ch, nt, et, st, wt);
                         puzzle().addPiece(p);
-                    }
+                    } else {
+						throw new IOException("Error: wrong format in input file.\n");
+					}
                 }
             }
         } catch (IOException e) {
@@ -59,7 +62,7 @@ public class IOPuzzle extends IOFile {
 
     /**
      * Implementation of abstract method void write() from IOFile.
-     * Write data from Puzzle reference from super class IOFile and write it into the file placed in outpath parameter in the
+     * Write data from Puzzle reference from super class IOFile into the file placed in opath parameter in the
      * constructor.
      * @throws IOException when the output file set by constructor seems to be corrupted or some other problems occured.
      */
