@@ -13,13 +13,19 @@
 #+LaTeX_HEADER: \newenvironment{changemargin}[2]{\list{}{\rightmargin#2\leftmargin#1\parsep=0pt\topsep=0pt\partopsep=0pt}\item[]}{\endlist}
 #+LaTeX_HEADER: \newenvironment{indentmore}{\begin{changemargin}{1cm}{0cm}}{\end{changemargin}}
 * Organizzazione e scelte implementative
-Ho scelto di seguire un pattern MVC per la modularità e la separazione logica - output che offre, anche in assenza di interfaccia grafica, nel caso futuro
-in cui venisse implementata, il design pattern scelto agevolerebbe notevolmente il lavoro.
+Pur trattandosi della prima parte del progetto e quindi di un programma non particolarmente complesso, ho comunque deciso di implementare il codice con un minimo di organizzazione
+e modularità seguendo un design pattern che potesse facilitare l'estensione futura del software per le parti successive.
+Anche in assenza di un interfaccia grafica, ho scelto di seguire il design pattern MVC per la modularità e la separazione logica - output che offre, inoltre nel caso ipotetico 
+in cui venisse implementata in futuro una GUI, il design pattern scelto agevolerebbe notevolmente il lavoro.\\
+La directory src contenente i sorgenti, è dunque suddivisa nelle tre classiche sotto-directory models, views, controllers, dove rispettivamente:
+- models contiene gli oggetti che rappresentano il puzzle e supporti I/O per l'interazione con i file di input e output
+- views contiene le classi adibite alla rappresentazione output dei risultati
+- controllers contiene le classi che si occupano della logica da applicare ai models 
 ** Organizzazione delle classi
-Le classi sono raggruppate in un package, *puzzlesolver* e all'esterno la classe *PuzzleSolver* contiene il ~main~ e le chiamate esecutive del programma.
-* Principi di OOP
-** Information hiding
-I campi dati delle classi sono stati dichiarati tutti ~private~, accedibili mediante classici metodi ~getters~ e ~setters~.
+Le classi sono raggruppate in un package, *puzzlesolver* con all'esterno la classe *PuzzleSolver* che contiene il ~main~ e le chiamate esecutive del programma.
+*** Principi di OOP
+**** Information hiding
+   I campi dati delle classi sono stati dichiarati tutti ~private~, accedibili mediante classici metodi ~getters~ e ~setters~.
 * Algoritmo di ricostruzione
 L'algoritmo di risoluzione implementato nella classe SortAlgSeq, derivata dalla classe base astratta SortAlg, è appunto un algoritmo di risoluzione 
 sequenziale, e si può riassumere in 3 passi:

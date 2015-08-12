@@ -1,4 +1,4 @@
-% Created 2015-08-11 mar 20:16
+% Created 2015-08-12 mer 14:33
 \documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{alltt}
@@ -39,18 +39,28 @@
 
 \section{Organizzazione e scelte implementative}
 \label{sec-1}
-Ho scelto di seguire un pattern MVC per la modularità e la separazione logica - output che offre, anche in assenza di interfaccia grafica, nel caso futuro
-in cui venisse implementata, il design pattern scelto agevolerebbe notevolmente il lavoro.
+Pur trattandosi della prima parte del progetto e quindi di un programma non particolarmente complesso, ho comunque deciso di implementare il codice con un minimo di organizzazione
+e modularità seguendo un design pattern che potesse facilitare l'estensione futura del software per le parti successive.
+Anche in assenza di un interfaccia grafica, ho scelto di seguire il design pattern MVC per la modularità e la separazione logica - output che offre, inoltre nel caso ipotetico 
+in cui venisse implementata in futuro una GUI, il design pattern scelto agevolerebbe notevolmente il lavoro.\\
+La directory src contenente i sorgenti, è dunque suddivisa nelle tre classiche sotto-directory models, views, controllers, dove rispettivamente:
+\begin{itemize}
+\item models contiene gli oggetti che rappresentano il puzzle e supporti I/O per l'interazione con i file di input e output
+\item views contiene le classi adibite alla rappresentazione output dei risultati
+\item controllers contiene le classi che si occupano della logica da applicare ai models
+\end{itemize}
 \subsection{Organizzazione delle classi}
 \label{sec-1-1}
-Le classi sono raggruppate in un package, \textbf{puzzlesolver} e all'esterno la classe \textbf{PuzzleSolver} contiene il \verb~main~ e le chiamate esecutive del programma.
-\section{Principi di OOP}
-\label{sec-2}
-\subsection{Information hiding}
-\label{sec-2-1}
+Le classi sono raggruppate in un package, \textbf{puzzlesolver} con all'esterno la classe \textbf{PuzzleSolver} che contiene il \verb~main~ e le chiamate esecutive del programma.
+\subsubsection{Principi di OOP}
+\label{sec-1-1-1}
+\begin{enumerate}
+\item Information hiding
+\label{sec-1-1-1-1}
 I campi dati delle classi sono stati dichiarati tutti \verb~private~, accedibili mediante classici metodi \verb~getters~ e \verb~setters~.
+\end{enumerate}
 \section{Algoritmo di ricostruzione}
-\label{sec-3}
+\label{sec-2}
 L'algoritmo di risoluzione implementato nella classe SortAlgSeq, derivata dalla classe base astratta SortAlg, è appunto un algoritmo di risoluzione 
 sequenziale, e si può riassumere in 3 passi:
 \begin{enumerate}
@@ -60,7 +70,7 @@ sequenziale, e si può riassumere in 3 passi:
 in quanto tutte le righe sono quindi già state ordinate, altrimenti si ripete (1) utilizzando il "nuovo" primo pezzo.
 \end{enumerate}
 \section{Note}
-\label{sec-4}
+\label{sec-3}
 Il progetto è stato sviluppato in ambiente linux, utilizzando la JVM versione 1.7.0.
 % Emacs 24.3.1 (Org mode 8.2.10)
 \end{document}
