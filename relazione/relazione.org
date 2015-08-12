@@ -1,0 +1,31 @@
+#+AUTHOR: Andrea Giacomo Baldan 579117
+#+EMAIL: a.g.baldan@gmail.com
+#+TITLE: Programmazione Concorrente e Distribuita 2014-2015. Prima parte.
+#+LaTeX_HEADER: \usepackage{titlesec}
+#+LaTeX_HEADER: \titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+#+LaTeX_HEADER: \usepackage[T1]{fontenc} 
+#+LaTeX_HEADER: \usepackage{libertine}
+#+LaTeX_HEADER: \renewcommand*\oldstylenums[1]{{\fontfamily{fxlj}\selectfont #1}}
+#+LaTeX_HEADER: \definecolor{wine-stain}{rgb}{0.5,0,0}
+#+LaTeX_HEADER: \hypersetup{colorlinks, linkcolor=wine-stain, linktoc=all}
+#+LaTeX_HEADER: \usepackage{lmodern}
+#+LaTeX_HEADER: \lstset{basicstyle=\normalfont\ttfamily\small,numberstyle=\small,breaklines=true,frame=tb,tabsize=1,showstringspaces=false,numbers=left,commentstyle=\color{grey},keywordstyle=\color{black}\bfseries,stringstyle=\color{red}}
+#+LaTeX_HEADER: \newenvironment{changemargin}[2]{\list{}{\rightmargin#2\leftmargin#1\parsep=0pt\topsep=0pt\partopsep=0pt}\item[]}{\endlist}
+#+LaTeX_HEADER: \newenvironment{indentmore}{\begin{changemargin}{1cm}{0cm}}{\end{changemargin}}
+* Organizzazione e scelte implementative
+Ho scelto di seguire un pattern MVC per la modularità e la separazione logica - output che offre, anche in assenza di interfaccia grafica, nel caso futuro
+in cui venisse implementata, il design pattern scelto agevolerebbe notevolmente il lavoro.
+** Organizzazione delle classi
+Le classi sono raggruppate in un package, *puzzlesolver* e all'esterno la classe *PuzzleSolver* contiene il ~main~ e le chiamate esecutive del programma.
+* Principi di OOP
+** Information hiding
+I campi dati delle classi sono stati dichiarati tutti ~private~, accedibili mediante classici metodi ~getters~ e ~setters~.
+* Algoritmo di ricostruzione
+L'algoritmo di risoluzione implementato nella classe SortAlgSeq, derivata dalla classe base astratta SortAlg, è appunto un algoritmo di risoluzione 
+sequenziale, e si può riassumere in 3 passi:
+1. Localizzazione del primo pezzo del puzzle, che corrisponde al pezzo avente "VUOTO" a nord e ad ovest.
+2. Inizio ciclo: ordina la riga a partire dal primo pezzo
+3. Ricerca del pezzo a sud del primo pezzo della nuova riga ora ordinata, se il pezzo a sud non esiste e troviamo dunque "VUOTO", il ciclo si ferma 
+   in quanto tutte le righe sono quindi già state ordinate, altrimenti si ripete (1) utilizzando il "nuovo" primo pezzo.
+* Note
+Il progetto è stato sviluppato in ambiente linux, utilizzando la JVM versione 1.7.0.
