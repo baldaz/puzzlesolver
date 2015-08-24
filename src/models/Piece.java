@@ -1,7 +1,7 @@
 package puzzlesolver;
 
 /**
- * MVC Pattern piece model representing a piece of a text puzzle, formed by an ID, the character it represents, and nearby
+ * Piece model representing a tile of a text puzzle, formed by an identifier, the character it represents, and nearby
  * pieces informations at his four cardinal points, provided with getters.
  */
 
@@ -33,7 +33,9 @@ public class Piece implements IPiece {
     west = w;
   }
 
-  // getter method for ID
+  /**
+   * @return identifier of the piece
+   */
 
   public String id() {
     return id;
@@ -120,6 +122,7 @@ public class Piece implements IPiece {
   }
 
   /**
+   * @override
    * toString override
    * @return returns the character that represent current piece
    */

@@ -1,45 +1,54 @@
 package puzzlesolver;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
- * MVC Pattern File representing an abstract base for input output file for puzzles.
+ * Abstract base representing input output file for puzzles.
  */
 
 public abstract class IOFile extends File {
 
-    private Puzzle puzzle = new Puzzle();
-    private String outpath = new String("");
+	private Puzzle puzzle = new Puzzle();
+	private String outpath = new String("");
 
-    /**
-     * Constructor
-     * @param path, path of the input file.
-     * @param opath, path of the output file.
-     */
+	/**
+	 * Constructor
+	 * @param path path of the input file.
+	 * @param opath path of the output file.
+	 */
 
-    public IOFile(String path, String opath) {
-        super(path);
-        outpath = opath;
-    }
+	public IOFile(String path, String opath) {
+		super(path);
+		outpath = opath;
+	}
 
-    public Puzzle puzzle() {
-        return puzzle;
-    }
+	/**
+	 * @return reference to the instance of puzzle
+	 */
 
-    public String outpath() {
-        return outpath;
-    }
+	public Puzzle puzzle() {
+		return puzzle;
+	}
 
-    /**
-     * Read data from the input file.
-     */
+	/**
+	 * @return output file path
+	 */
 
-    public abstract void read();
+	public String outpath() {
+		return outpath;
+	}
 
-    /**
-     * Write data to the output file in outpath.
-     */
+	/**
+	 * Read data from the input file.
+	 */
 
-    public abstract void write();
+	public abstract void read() throws IOException;
+
+	/**
+	 * Write data to the output file in outpath.
+	 */
+
+	public abstract void write();
 
 }

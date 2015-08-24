@@ -1,10 +1,11 @@
 package puzzlesolver;
 
+import java.io.IOException;
 import java.util.Vector;
 import java.util.Iterator;
 
 /**
- * MVC Pattern view class, implementation of IPuzzleView interface.
+ * View class, implementation of IPuzzleView interface.
  */
 
 public class PuzzleView implements IPuzzleView {
@@ -20,19 +21,29 @@ public class PuzzleView implements IPuzzleView {
         this.io = io;
     }
 
+	/**
+	 * @return puzzle reference
+	 */
+
     public Puzzle puzzle() {
         return io.puzzle();
     }
 
     /**
+	 * @override
      * Read input from file.
      */
 
     public void inputPuzzle() {
-        io.read();
+		try {
+			io.read();
+		} catch(IOException e) {
+			System.out.println(e);
+		}
     }
 
     /**
+	 * @override
      * Write output to file.
      */
 
