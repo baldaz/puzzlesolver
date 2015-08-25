@@ -8,47 +8,47 @@ import java.util.Vector;
 
 public class Puzzle {
 
-    private Vector<IPiece> pieces;
+	private Vector<IPiece> pieces;
 
 	/**
 	 * Constructor
 	 */
 
-    public Puzzle() {
-        pieces = new Vector<IPiece>();
-    }
+	public Puzzle() {
+		pieces = new Vector<IPiece>();
+	}
 
-    /**
-     * @return size an int value representing size of the puzzle.
-     */
+	/**
+	 * @return size an int value representing size of the puzzle.
+	 */
 
-    public int size() {
-        return pieces.size();
-    }
+	public int size() {
+		return pieces.size();
+	}
 
-    /**
-     * Add a piece to the Vector of pieces.
-     * @param p reference to a Piece.
-     */
+	/**
+	 * Add a piece to the Vector of pieces.
+	 * @param p reference to a Piece.
+	 */
 
-    public void addPiece(IPiece p) {
-        pieces.add(p);
-    }
+	public void addPiece(IPiece p) {
+		pieces.add(p);
+	}
 
-    /**
-     * @return A Vector of pieces representing the puzzle.
-     */
+	/**
+	 * @return A Vector of pieces representing the puzzle.
+	 */
 
-    public Vector<IPiece> pieces() {
-        return pieces;
-    }
+	public Vector<IPiece> pieces() {
+		return pieces;
+	}
 
-    /**
-     * Set a new puzzle.
-     * @param pcs a Vector of pieces that will replace the current Vector.
-     */
+	/**
+	 * Set a new puzzle.
+	 * @param pcs a Vector of pieces that will replace the current Vector.
+	 */
 
-    public void setPieces(Vector<IPiece> pcs) {
-        pieces = pcs;
-    }
+	public void setPieces(Vector<IPiece> pcs) {
+		pieces = pcs;
+	}
 }

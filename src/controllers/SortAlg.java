@@ -6,28 +6,28 @@ package puzzlesolver;
 
 public abstract class SortAlg {
 
-    private Puzzle model;
+	private Puzzle model;
 
-    /**
-     * Constructor
-     * @param m puzzle model to sort.
-     */
+	/**
+	 * Constructor
+	 * @param m reference to a puzzle model to sort.
+	 */
 
-    public SortAlg(Puzzle m) {
-        model = m;
-    }
+	public SortAlg(Puzzle m) {
+		model = m;
+	}
 
 	/**
 	 * @return puzzle model
 	 */
 
-    public Puzzle puzzle() {
-        return model;
-    }
+	public Puzzle puzzle() {
+		return model;
+	}
 
-    /**
-     * Abstract sort method, must be overridden.
-     */
+	/**
+	 * Abstract sort method, must be overridden.
+	 */
 
-    public abstract void sort();
+	public abstract void sort();
 }
