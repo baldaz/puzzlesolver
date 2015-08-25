@@ -2,45 +2,63 @@ package puzzlesolver;
 
 import java.util.Vector;
 import java.util.Iterator;
+import java.io.IOException;
 
 /**
- * MVC Pattern view class, implementation of IPuzzleView interface.
+ * View class, implementation of IPuzzleView interface.
  */
 
 public class PuzzleView implements IPuzzleView {
 
-    private IOFile io;
+	private IOFile io;
 
-    /**
-     * Constructor
-     * @param io IOFile type representing the puzzle file, provides input and output features.
-     */
+	/**
+	 * Constructor
+	 * @param io IOFile type representing the puzzle file, provides input and
+	 * output features.
+	 */
 
-    public PuzzleView(IOFile io) {
-        this.io = io;
-    }
+	public PuzzleView(IOFile io) {
+		this.io = io;
+	}
 
-    public Puzzle puzzle() {
-        return io.puzzle();
-    }
+	/**
+	 * @return a reference to a puzzle
+	 */
 
-    /**
-     * Read input from file.
-     */
+	public Puzzle puzzle() {
+		return io.puzzle();
+	}
 
-    public void inputPuzzle() {
-        io.read();
-    }
+	/**
+	 * @override
+	 * Read input from file.
+	 */
 
-    /**
-     * Write output to file.
-     */
+	public void inputPuzzle() {
+		try {
+			io.read();
+		} catch(IOException e) {
+			System.out.println(e);
+		}
+	}
 
-    public void outputPuzzle() {
-        io.write();
-    }
+	/**
+	 * @override
+	 * Write output to file.
+	 */
 
-    public void updatePuzzle(Puzzle p) {
-        io.setPuzzle(p);
-    }
+	public void outputPuzzle() {
+		io.write();
+	}
+
+	/**
+	 * @override
+	 * Set a new puzzle
+	 * @param p a reference to a puzzle object
+	 */
+
+	public void updatePuzzle(Puzzle p) {
+		io.setPuzzle(p);
+	}
 }

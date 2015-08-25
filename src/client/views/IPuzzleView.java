@@ -1,24 +1,24 @@
 package puzzlesolver;
 
 /**
- * MVC pattern, public interface for a puzzle.
+ * Public interface for a puzzle.
  */
 
 public interface IPuzzleView {
 
-    // return puzzle
+	// return puzzle
 
-    public Puzzle puzzle();
+	public Puzzle puzzle();
 
-    // update puzzle
+	// update puzzle
 
-    public void updatePuzzle(Puzzle p);
+	public void updatePuzzle(Puzzle p);
 
-    // read from file and populate puzzle
+	// read from file and populate puzzle
 
-    public void inputPuzzle();
+	public void inputPuzzle();
 
-    // write sorted puzzle on file
+	// write sorted puzzle on file
 
-    public void outputPuzzle();
+	public void outputPuzzle();
 }

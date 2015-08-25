@@ -2,8 +2,9 @@ package puzzlesolver;
 import java.io.Serializable;
 
 /**
- * MVC Pattern piece model representing a piece of a text puzzle, formed by an ID, the character it represents, and nearby
- * pieces informations at his four cardinal points, provided with getters.
+ * Piece model representing a piece of a text puzzle, formed by an ID, the
+ * character it represents, and nearby pieces informations at his four cardinal
+ * points, provided with getters.
  */
 
 public class Piece implements IPiece, Serializable {
@@ -34,16 +35,20 @@ public class Piece implements IPiece, Serializable {
     west = w;
   }
 
-  // getter method for ID
+  /*
+   * @return identifier of the piece
+   */
 
   public String id() {
     return id;
   }
 
   /**
+   * @override
    * Check if a given piece is the north piece of the current one
    * @param p piece of the puzzle that could be at north of the current one
-   * @return returns true if the given piece p is at north of the current one, else false
+   * @return returns true if the given piece p is at north of the current one,
+   * else false
    */
 
   public boolean northSide(IPiece p) {
@@ -52,9 +57,11 @@ public class Piece implements IPiece, Serializable {
   }
 
   /**
+   * @override
    * Check if a given piece is the east piece of the current one
    * @param p piece of the puzzle that could be at east of the current one
-   * @return returns true if the given piece p is at east of the current one, else false
+   * @return returns true if the given piece p is at east of the current one,
+   * else false
    */
 
   public boolean eastSide(IPiece p) {
@@ -63,9 +70,11 @@ public class Piece implements IPiece, Serializable {
   }
 
   /**
+   * @override
    * Check if a given piece is the south piece of the current one
    * @param p piece of the puzzle that could be at south of the current one
-   * @return returns true if the given piece p is at south of the current one, else false
+   * @return returns true if the given piece p is at south of the current one,
+   * else false
    */
 
   public boolean southSide(IPiece p) {
@@ -74,9 +83,11 @@ public class Piece implements IPiece, Serializable {
   }
 
   /**
+   * @override
    * Check if a given piece is the west piece of the current one
    * @param p piece of the puzzle that could be at west of the current one
-   * @return returns true if the given piece p is at west of the current one, else false
+   * @return returns true if the given piece p is at west of the current one,
+   * else false
    */
 
   public boolean westSide(IPiece p) {
@@ -85,8 +96,10 @@ public class Piece implements IPiece, Serializable {
   }
 
   /**
+   * @override
    * Check if the current piece has "VUOTO" on his north side
-   * @return returns true if the current piece has "VUOTO" on his north side, otherwise returns false
+   * @return returns true if the current piece has "VUOTO" on his north side,
+   * otherwise returns false
    */
 
   public boolean northBorder() {
@@ -94,8 +107,10 @@ public class Piece implements IPiece, Serializable {
   }
 
   /**
+   * @override
    * Check if the current piece has "VUOTO" on his east side
-   * @return returns true if the current piece has "VUOTO" on his east side, otherwise returns false
+   * @return returns true if the current piece has "VUOTO" on his east side,
+   * otherwise returns false
    */
 
   public boolean eastBorder() {
@@ -103,8 +118,10 @@ public class Piece implements IPiece, Serializable {
   }
 
   /**
+   * @override
    * Check if the current piece has "VUOTO" on his south side
-   * @return returns true if the current piece has "VUOTO" on his south side, otherwise returns false
+   * @return returns true if the current piece has "VUOTO" on his south side,
+   * otherwise returns false
    */
 
   public boolean southBorder() {
@@ -112,8 +129,10 @@ public class Piece implements IPiece, Serializable {
   }
 
   /**
+   * @override
    * Check if the current piece has "VUOTO" on his west side
-   * @return returns true if the current piece has "VUOTO" on his west side, otherwise returns false
+   * @return true if the current piece has "VUOTO" on his west side, otherwise
+   * returns false
    */
 
   public boolean westBorder() {
@@ -121,6 +140,7 @@ public class Piece implements IPiece, Serializable {
   }
 
   /**
+   * @override
    * toString override
    * @return returns the character that represent current piece
    */

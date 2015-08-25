@@ -1,44 +1,44 @@
 package puzzlesolver;
 
 /**
- * MVC Pattern, Piece interface representing a generic piece of an ordinable puzzle
+ * Piece interface representing a generic piece of an ordinable puzzle
  */
 
 public interface IPiece {
 
-    // true if p is the north piece of the current piece
+	// true if p is the north piece of the current piece
 
-    public boolean northSide(IPiece p);
+	public boolean northSide(IPiece p);
 
-    // true if p is the east piece of the current piece
+	// true if p is the east piece of the current piece
 
-    public boolean eastSide(IPiece p);
+	public boolean eastSide(IPiece p);
 
-    // true if p is the south piece of the current piece
+	// true if p is the south piece of the current piece
 
-    public boolean southSide(IPiece p);
+	public boolean southSide(IPiece p);
 
-    // true if p is the west piece of the current piece
+	// true if p is the west piece of the current piece
 
-    public boolean westSide(IPiece p);
+	public boolean westSide(IPiece p);
 
-    // true if current piece has "VUOTO" on the north side
+	// true if current piece has "VUOTO" on the north side
 
-    public boolean northBorder();
+	public boolean northBorder();
 
-    // true if current piece has "VUOTO" on the east side
+	// true if current piece has "VUOTO" on the east side
 
-    public boolean eastBorder();
+	public boolean eastBorder();
 
-    // true if current piece has "VUOTO" on the south side
+	// true if current piece has "VUOTO" on the south side
 
-    public boolean southBorder();
+	public boolean southBorder();
 
-    // true if current piece has "VUOTO" on the west side
+	// true if current piece has "VUOTO" on the west side
 
-    public boolean westBorder();
+	public boolean westBorder();
 
-    // toString override
+	// toString override
 
-    public String toString();
+	public String toString();
 }

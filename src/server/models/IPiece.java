@@ -1,7 +1,7 @@
 package puzzlesolver;
 
 /**
- * MVC Pattern, Piece interface representing a generic piece of an ordinable puzzle
+ * Piece interface representing a generic piece of an ordinable puzzle
  */
 
 public interface IPiece {

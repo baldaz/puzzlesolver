@@ -3,7 +3,7 @@ package puzzlesolver;
 import java.rmi.*;
 
 /**
- * MVC Pattern, public interface for the puzzle controller.
+ * Public interface for the puzzle controller.
  */
 
 public interface IPuzzleController {

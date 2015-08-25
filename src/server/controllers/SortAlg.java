@@ -1,7 +1,7 @@
 package puzzlesolver;
 
 /**
- * MVC Pattern sorting algorithm abstract base
+ * Sorting algorithm abstract base
  */
 
 public abstract class SortAlg {
@@ -20,13 +20,25 @@ public abstract class SortAlg {
         size = s;
     }
 
+	/**
+	 * @return return puzzle model
+	 */
+
     public Puzzle puzzle() {
         return model;
     }
 
+	/**
+	 * @return return size of the puzzle model
+	 */
+
     public int size() {
         return size;
     }
+
+	/**
+	 * Subtract a unit from the puzzle model size
+	 */
 
     public void subOne() {
         size--;

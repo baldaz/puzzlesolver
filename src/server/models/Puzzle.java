@@ -8,12 +8,16 @@ public class Puzzle implements Serializable {
 
     private Vector<IPiece> pieces;
 
+	/**
+	 * Constructor
+	 */
+
     public Puzzle() {
         pieces = new Vector<IPiece>();
     }
 
     /**
-     * @return size, an int value representing size of the puzzle.
+     * @return size an int value representing size of the puzzle.
      */
 
     public int size() {
@@ -22,7 +26,7 @@ public class Puzzle implements Serializable {
 
     /**
      * Add a piece to the Vector of pieces.
-     * @param p, reference to a Piece.
+     * @param p reference to a Piece.
      */
 
     public void addPiece(IPiece p) {
@@ -39,7 +43,7 @@ public class Puzzle implements Serializable {
 
     /**
      * Set a new puzzle.
-     * @param pcs, a Vector of pieces that will replace the current Vector.
+     * @param pcs a Vector of pieces that will replace the current Vector.
      */
 
     public void setPieces(Vector<IPiece> pcs) {
