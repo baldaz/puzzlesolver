@@ -1,0 +1,15 @@
+#+AUTOR: Andrea Giacomo Baldan 579117
+#+EMAIL: a.g.baldan@gmail.com
+#+TITLE: Programmazione Concorrente e Distribuita 2014-2015. Seconda parte.
+#+LaTeX_HEADER: \usepackage{titlesec}
+#+LaTeX_HEADER: \titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+#+LaTeX_HEADER: \usepackage[T1]{fontenc} 
+#+LaTeX_HEADER: \usepackage{libertine}
+#+LaTeX_HEADER: \renewcommand*\oldstylenums[1]{{\fontfamily{fxlj}\selectfont #1}}
+#+LaTeX_HEADER: \definecolor{wine-stain}{rgb}{0.5,0,0}
+#+LaTeX_HEADER: \hypersetup{colorlinks, linkcolor=wine-stain, linktoc=all}
+#+LaTeX_HEADER: \usepackage{lmodern}
+#+LaTeX_HEADER: \lstset{basicstyle=\normalfont\ttfamily\small,numberstyle=\small,breaklines=true,frame=tb,tabsize=1,showstringspaces=false,numbers=left,commentstyle=\color{grey},keywordstyle=\color{black}\bfseries,stringstyle=\color{red}}
+#+LaTeX_HEADER: \newenvironment{changemargin}[2]{\list{}{\rightmargin#2\leftmargin#1\parsep=0pt\topsep=0pt\partopsep=0pt}\item[]}{\endlist}
+#+LaTeX_HEADER: \newenvironment{indentmore}{\begin{changemargin}{1cm}{0cm}}{\end{changemargin}}
+* Algoritmo di ricostruzione parallelo
