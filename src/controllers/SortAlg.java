@@ -40,7 +40,7 @@ public abstract class SortAlg {
 	 * Subtract a unit from the size of the part of the puzzle
 	 */
 
-    public void subOne() {
+	protected void subOne() {
         size--;
     }
 
