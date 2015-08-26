@@ -12,3 +12,10 @@
 #+LaTeX_HEADER: \lstset{basicstyle=\normalfont\ttfamily\small,numberstyle=\small,breaklines=true,frame=tb,tabsize=1,showstringspaces=false,numbers=left,commentstyle=\color{grey},keywordstyle=\color{black}\bfseries,stringstyle=\color{red}}
 #+LaTeX_HEADER: \newenvironment{changemargin}[2]{\list{}{\rightmargin#2\leftmargin#1\parsep=0pt\topsep=0pt\partopsep=0pt}\item[]}{\endlist}
 #+LaTeX_HEADER: \newenvironment{indentmore}{\begin{changemargin}{1cm}{0cm}}{\end{changemargin}}
+
+* Modifiche finali
+
+Le maggiori modifiche per l'ultima parte del progetto sono state apportate a livello organizzativo. Dovendo separare il lato client dal lato server, non sono state create classi
+aggiuntive, le esistenti sono però state "ridistribuite" in modo da rispettare le specifiche richieste; nella suddivisione *client* e *server* la gestione I/O è stata assegnato al 
+lato client mentre la logica di ordinamento del puzzle è stata spostata al lato server. E' dunque compito del server ora occuparsi della gestione dei thread di ordinamento,
+indipendentemente da quanti client si connettono e richiedono una risoluzione.
