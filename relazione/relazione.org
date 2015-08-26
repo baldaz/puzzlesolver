@@ -77,13 +77,20 @@ Qui risiedono le classi adibite alla parte logica del programma, *SortAlg.java* 
 *SortAlgSeq.java* che, come suggerisce il nome, implementa il metodo astratto ~sort~, mentre *IPuzzleController.java* e la sua implementazione *PuzzleController.java* costituiscono
 l'effettivo controller a disposizione dell'utente per l'ordinamento del puzzle.
 
-*** Principi di OOP
+** Principi di OOP
 
-**** Information hiding
+*** Information hiding
 
 I campi dati delle classi sono stati dichiarati tutti ~private~, accedibili mediante classici metodi ~getters~ e ~setters~. Tutti i metodi di utilità all'interno della classe SortAlgSeq
 sono stati dichiarati ~private~, questo perchè l'organizzazione mediante classe base astratta permette di ridefinire a piacimento il metodo di ordinamento scelto, di cui i suddetti metodi
 fanno parte.
+
+*** Polimorfismo
+
+Al fine di garantire un buon livello di estendibilità, il puzzle è stato pensato in modo da operare con oggetti di tipo *IPiece*, ovvero l'interfaccia che delinea la struttura e il
+comportamento dei pezzi del puzzle, in questo modo è possibile creare la propria "versione" dei pezzi senza dover modificare codice nella classe *Puzzle*.\\
+Lo stesso si può affermare delle classi di gestione I/O, views e controller, l'algoritmo di ordinamento stesso, nocciolo della prima parte del progetto, poggia su una classe base
+astratta, ed è possibile estendere o creare altre versioni mediante override del metodo di ordinamento.
 
 * Algoritmo di ricostruzione
 
