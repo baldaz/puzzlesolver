@@ -122,10 +122,10 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
 			Vector<IPiece> tmp = sortRow(first);
 			row.addAll(tmp);
 			first = nextInCol(tmp.firstElement());
-			System.out.println("checktop");
+//			System.out.println("checktop");
 		}
 		result = row;
-		System.out.println("FromTop: " + row.size());
+//		System.out.println("FromTop: " + row.size());
 	}
 
 	/**

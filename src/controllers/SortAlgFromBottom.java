@@ -126,11 +126,11 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 			Vector<IPiece> tmp = sortRow(first);
 			row.addAll(tmp);
 			first = nextInCol(tmp.firstElement());
-			System.out.println("checkbottom");
+//			System.out.println("checkbottom");
 		}
 		Collections.reverse(row);
 		result = row;
-		System.out.println("FromBottom: " + row.size());
+//		System.out.println("FromBottom: " + row.size());
 	}
 
 	/**

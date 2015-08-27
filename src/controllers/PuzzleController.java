@@ -45,8 +45,8 @@ public class PuzzleController implements IPuzzleController {
         } catch(InterruptedException e) {
             System.err.println(e);
         }
-        System.out.println(top_sa.size());
-        System.out.println(bot_sa.size());
+//        System.out.println(top_sa.size());
+//        System.out.println(bot_sa.size());
         Vector<IPiece> end = top_sa.result();
         end.addAll(bot_sa.result());
         view.puzzle().setPieces(end);
