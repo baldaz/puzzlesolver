@@ -25,21 +25,18 @@ public class PuzzleController implements IPuzzleController {
      */
 
     public void sort() {
-        int jump = 0;
-        int msize = view.puzzle().size();
-        int hsize = 0;
-        if((msize % 2) == 0) {
-            hsize = msize / 2;
-            jump = hsize;
+        int m_size = view.puzzle().size();
+        int h_size = 0;
+        if((m_size % 2) == 0) {
+            h_size = m_size / 2;
         }
         else {
-            hsize = (msize / 2) + 1;
-            jump = hsize - 2;
+            h_size = (m_size / 2) + 1;
         }
-        SortAlgFromBottom algb = new SortAlgFromBottom(view.puzzle(), hsize);
-        SortAlgFromTop alg = new SortAlgFromTop(view.puzzle(), msize / 2);
-        Thread top = new Thread(alg);
-        Thread bot = new Thread(algb);
+        SortAlgFromBottom bot_sa = new SortAlgFromBottom(view.puzzle(), h_size);
+        SortAlgFromTop top_sa = new SortAlgFromTop(view.puzzle(), m_size / 2);
+        Thread top = new Thread(top_sa);
+        Thread bot = new Thread(bot_sa);
         top.start();
         bot.start();
         try {
@@ -48,10 +45,10 @@ public class PuzzleController implements IPuzzleController {
         } catch(InterruptedException e) {
             System.err.println(e);
         }
-        System.out.println(alg.size());
-        System.out.println(algb.size());
-        Vector<IPiece> end = alg.result();
-        end.addAll(algb.result());
+        System.out.println(top_sa.size());
+        System.out.println(bot_sa.size());
+        Vector<IPiece> end = top_sa.result();
+        end.addAll(bot_sa.result());
         view.puzzle().setPieces(end);
     }
 
