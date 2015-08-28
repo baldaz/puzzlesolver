@@ -103,9 +103,11 @@ public class IOPuzzle extends IOFile {
 			writer.write("\n\n");
 			writer.write(pcomplete);
 			writer.write("\n");
-			writer.write(Integer.toString(row)); writer.write(" ");
-			writer.write(Integer.toString(col)); } catch (IOException e) {
-				System.err.println(e);
-			}
+			writer.write(Integer.toString(row));
+			writer.write(" ");
+			writer.write(Integer.toString(col));
+		} catch (IOException e) {
+			System.err.println(e);
+		}
 	}
 }

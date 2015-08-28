@@ -13,6 +13,7 @@ import java.util.Collections;
 public class SortAlgFromBottom extends SortAlg implements Runnable {
 
 	private Vector<IPiece> result = new Vector<IPiece>();
+	private IPiece[] p_arr;
 
 	/**
 	 * Constructor
@@ -22,6 +23,7 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 
 	public SortAlgFromBottom(Puzzle model, int size) {
 		super(model, size);
+		p_arr = model.pieces().toArray(new IPiece[model.size()]);
 	}
 
 	/**
@@ -42,11 +44,10 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 	 */
 
 	private IPiece firstPiece() {
-		IPiece[] p = puzzle().pieces().toArray(new IPiece[puzzle().pieces().size()]);
 		for(int i = 0; i < puzzle().pieces().size(); ++i) {
-			if(p[i].southBorder() && p[i].eastBorder()) {
+			if(p_arr[i].southBorder() && p_arr[i].eastBorder()) {
 				subOne();
-				return p[i];
+				return p_arr[i];
 			}
 		}
 		return null;
@@ -61,11 +62,10 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 	 */
 
 	private IPiece nextInRow(IPiece p) {
-		IPiece[] pa = puzzle().pieces().toArray(new IPiece[puzzle().pieces().size()]);
 		for(int i = 0; i < puzzle().pieces().size(); ++i) {
-			if(p.westSide(pa[i])) {
+			if(p.westSide(p_arr[i])) {
 				subOne();
-				return pa[i];
+				return p_arr[i];
 			}
 		}
 		return null;
@@ -80,11 +80,10 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 	 */
 
 	private IPiece nextInCol(IPiece p) {
-		IPiece[] pa = puzzle().pieces().toArray(new IPiece[puzzle().pieces().size()]);
 		for(int i = 0; i < puzzle().pieces().size(); ++i) {
-			if(p.northSide(pa[i])) {
+			if(p.northSide(p_arr[i])) {
 				subOne();
-				return pa[i];
+				return p_arr[i];
 			}
 		}
 		return null;
@@ -120,16 +119,11 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 
 	public void sort() {
 		IPiece first = firstPiece(); // first piece
-		Vector<IPiece> row = new Vector<IPiece>();
 		while(size() > 0) {
-			Vector<IPiece> tmp = sortRow(first);
-			row.addAll(tmp);
-			first = nextInCol(tmp.firstElement());
-			System.out.println("checkbottom");
+			result.addAll(sortRow(first));
+			first = nextInCol(first);
 		}
-		Collections.reverse(row);
-		result = row;
-		System.out.println("FromBottom: " + row.size());
+		Collections.reverse(result);
 	}
 
 	/**
