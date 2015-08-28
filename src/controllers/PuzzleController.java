@@ -33,8 +33,9 @@ public class PuzzleController implements IPuzzleController {
 		else {
 			h_size = (m_size / 2) + 1;
 		}
-		SortAlgFromBottom bot_sa = new SortAlgFromBottom(view.puzzle(), h_size);
-		SortAlgFromTop top_sa = new SortAlgFromTop(view.puzzle(), m_size / 2);
+		SharedSortStat shared = new SharedSortStat();
+		SortAlgFromBottom bot_sa = new SortAlgFromBottom(view.puzzle(), h_size, shared);
+		SortAlgFromTop top_sa = new SortAlgFromTop(view.puzzle(), m_size / 2, shared);
 		Thread top = new Thread(top_sa);
 		Thread bot = new Thread(bot_sa);
 		top.start();
@@ -45,9 +46,9 @@ public class PuzzleController implements IPuzzleController {
 		} catch(InterruptedException e) {
 			System.err.println(e);
 		}
-		Vector<IPiece> end = top_sa.result();
-		end.addAll(bot_sa.result());
-		view.puzzle().setPieces(end);
+		/* Vector<IPiece> end = top_sa.result(); */
+		/* end.addAll(bot_sa.result()); */
+		/* view.puzzle().setPieces(end); */
 	}
 
 	/**

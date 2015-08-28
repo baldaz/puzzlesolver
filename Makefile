@@ -19,7 +19,10 @@ IOPuzzle.class:
 PuzzleView.class: Puzzle.class IOPuzzle.class
 	$(JC) $(BIN) src/views/IPuzzleView.java src/views/PuzzleView.java
 
-SortAlg.class:
+SharedSortStat.class:
+	$(JC) $(BIN) src/controllers/SharedSortStat.java
+
+SortAlg.class: SharedSortStat.class
 	$(JC) $(BIN) src/controllers/SortAlg.java
 
 SortAlgFromTop.class: SortAlg.class

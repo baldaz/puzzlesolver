@@ -8,6 +8,7 @@ public abstract class SortAlg {
 
 	private int size;
 	private Puzzle model;
+	private static SharedSortStat shared;
 
 	/**
 	 * Constructor
@@ -15,9 +16,10 @@ public abstract class SortAlg {
 	 * @param s size of the part of the puzzle that must be sorted
 	 */
 
-	public SortAlg(Puzzle m, int s) {
+	public SortAlg(Puzzle m, int s, SharedSortStat shared) {
 		model = m;
 		size = s;
+		this.shared = shared;
 	}
 
 	/**
@@ -34,6 +36,10 @@ public abstract class SortAlg {
 
 	public int size() {
 		return size;
+	}
+
+	public SharedSortStat getShared() {
+		return shared;
 	}
 
 	/**
