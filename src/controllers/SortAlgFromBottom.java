@@ -135,15 +135,14 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 
 	public void run() {
 		sort();
+		getShared().setBotDone();
 		synchronized(puzzle()) {
 			while(!getShared().topDone() || !getShared().topWritten()) {
-				getShared().setBotDone();
 				puzzle().notify();
 				try {
 					puzzle().wait();
 				} catch(InterruptedException e) {}
 			}
-			getShared().setBotDone();
 			puzzle().notify();
 			puzzle().pieces().addAll(result);
 		}
