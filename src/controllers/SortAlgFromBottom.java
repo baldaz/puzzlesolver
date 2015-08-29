@@ -17,7 +17,7 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 
 	/**
 	 * Constructor
-	 * @param model puzzle object to sort
+	 * @param model refernce to puzzle object to sort
 	 * @param size size of the part of the puzzle that must be sorted
 	 */
 
@@ -40,7 +40,8 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 	 * the puzzle iterating through the vector of piece that represent the
 	 * puzzle itself using a loop that check if the current piece has north and
 	 * west sides setted at "VUOTO", else returns null.
-	 * @return returns a reference to a piece object, representing the first piece of the puzzle.
+	 * @return returns a reference to a piece object, representing the first
+	 * piece of the puzzle.
 	 */
 
 	private IPiece firstPiece() {
@@ -74,7 +75,7 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 	/**
 	 * Private method that find the piece whose ID equals the south information
 	 * of a given piece.
-	 * @param p piece object.
+	 * @param p reference to a piece object.
 	 * @return a reference to a piece object, representing the south piece of
 	 * the given piece.
 	 */
@@ -108,14 +109,14 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 	}
 
 	/**
+	 * @override
 	 * Public method that sort the puzzle by using private methods to find the
 	 * first piece and the following ones.  After locating the first piece,
 	 * through a while loop, this method sort every row giving at every cycle
 	 * the first piece of the current row to sort, by calling nextInCol on the
 	 * first piece of the previous row (already sorted) until a piece with
 	 * south information equals to "VUOTO" is found. In the end it sets the new
-	 * vector of Piece created to the puzzle
-	 * member.
+	 * vector of Piece created to the puzzle member.
 	 */
 
 	public void sort() {
@@ -135,7 +136,6 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 	public void run() {
 		sort();
 		synchronized(puzzle()) {
-			System.out.println("Here bot first");
 			while(!getShared().topDone() || !getShared().topWritten()) {
 				getShared().setBotDone();
 				puzzle().notify();
@@ -145,7 +145,6 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 			}
 			getShared().setBotDone();
 			puzzle().notify();
-			System.out.println("Here bot");
 			puzzle().pieces().addAll(result);
 		}
 	}

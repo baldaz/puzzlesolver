@@ -8,7 +8,7 @@ public abstract class SortAlg {
 
 	private int size;
 	private Puzzle model;
-	private static SharedSortStat shared;
+	private SharedSortStat shared;
 
 	/**
 	 * Constructor

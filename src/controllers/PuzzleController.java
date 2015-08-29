@@ -1,7 +1,5 @@
 package puzzlesolver;
 
-import java.util.Vector;
-
 /**
  * Controller class, implementation of IPuzzleController interface.
  */
@@ -12,7 +10,8 @@ public class PuzzleController implements IPuzzleController {
 
 	/**
 	 * Constructor
-	 * @param v IPuzzleView type representing a puzzle view, provides input and output features.
+	 * @param v IPuzzleView reference representing a puzzle view, provides
+	 * input and output features.
 	 */
 
 	public PuzzleController(IPuzzleView v) {
@@ -21,7 +20,11 @@ public class PuzzleController implements IPuzzleController {
 
 	/**
 	 * @override
-	 * Sorting method, sorts the puzzle using SortAlg type object.
+	 * Sorting method, sorts the puzzle using SortAlg derived objects. First
+	 * off all it get a point near the middle of the Vector of pieces
+	 * representing the puzzle, then it launch 2 threads passing to them a
+	 * reference to the sorting algorithm, top and bot side respectively, and a
+	 * reference of a shared object to allow communication between the threads.
 	 */
 
 	public void sort() {
@@ -46,9 +49,6 @@ public class PuzzleController implements IPuzzleController {
 		} catch(InterruptedException e) {
 			System.err.println(e);
 		}
-		/* Vector<IPiece> end = top_sa.result(); */
-		/* end.addAll(bot_sa.result()); */
-		/* view.puzzle().setPieces(end); */
 	}
 
 	/**

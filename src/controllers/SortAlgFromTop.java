@@ -130,14 +130,14 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
 	public void run() {
 		sort();
 		synchronized(puzzle()) {
-			System.out.println("here top first");
 			while(!getShared().botDone()) {
 				getShared().setTopDone();
 				try {
 					puzzle().wait();
-				} catch(InterruptedException e) {}
+				} catch(InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
-			System.out.println("here top");
 			puzzle().setPieces(result);
 			getShared().setTopWritten();
 			puzzle().notify();
