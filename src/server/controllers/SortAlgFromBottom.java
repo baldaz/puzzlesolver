@@ -19,10 +19,12 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 	 * Constructor
 	 * @param model puzzle object to sort
 	 * @param size size of the part of the puzzle that must be sorted
+	 * @param shared reference to the shared object needed to allow
+	 * communication between threads
 	 */
 
-	public SortAlgFromBottom(Puzzle model, int size) {
-		super(model, size);
+	public SortAlgFromBottom(Puzzle model, int size, SharedSortStat shared) {
+		super(model, size, shared);
 		p_arr = model.pieces().toArray(new IPiece[model.size()]);
 	}
 
@@ -133,5 +135,19 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 
 	public void run() {
 		sort();
+		getShared().setBotDone();
+		synchronized(puzzle()) {
+			while(!getShared().topDone() || !getShared().topWritten()) {
+				puzzle().notify();
+				try {
+					puzzle().wait();
+				} catch(InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+			System.out.println("Bot done - sorted [" + result.size() + "]");
+			puzzle().notify();
+			puzzle().pieces().addAll(result);
+		}
 	}
 }

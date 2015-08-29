@@ -16,7 +16,10 @@ SPiece.class:
 SPuzzle.class: SPiece.class
 	$(JC) $(SBIN) src/server/models/Puzzle.java
 
-SortAlg.class:
+SharedSortStat.class:
+	$(JC) $(SBIN) src/server/controllers/SharedSortStat.java
+
+SortAlg.class: SharedSortStat.class
 	$(JC) $(SBIN) src/server/controllers/SortAlg.java
 
 SortAlgFromTop.class: SortAlg.class

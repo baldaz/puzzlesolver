@@ -18,10 +18,12 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
 	 * Constructor
 	 * @param model reference to a puzzle object to sort
 	 * @param size size of the part of the puzzle that must be sorted
+	 * @param shared reference to the shared object needed to allow
+	 * communication between threads
 	 */
 
-	public SortAlgFromTop(Puzzle model, int size) {
-		super(model, size);
+	public SortAlgFromTop(Puzzle model, int size, SharedSortStat shared) {
+		super(model, size, shared);
 		p_arr = model.pieces().toArray(new IPiece[model.size()]);
 	}
 
@@ -130,5 +132,19 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
 
 	public void run() {
 		sort();
+		getShared().setTopDone();
+		synchronized(puzzle()) {
+			while(!getShared().botDone()) {
+				try {
+					puzzle().wait();
+				} catch(InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+			System.out.println("Top done - sorted [" + result.size() + "]");
+			puzzle().setPieces(result);
+			getShared().setTopWitten();
+			puzzle().notify();
+		}
 	}
 }
