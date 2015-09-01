@@ -45,10 +45,10 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
 	 */
 
 	private IPiece firstPiece() {
-		for(int i = 0; i < puzzle().pieces().size(); ++i) {
-			if(p_arr[i].northBorder() && p_arr[i].westBorder()) {
+		for(IPiece p : p_arr) {
+			if(p.northBorder() && p.westBorder()) {
 				subOne();
-				return p_arr[i];
+				return p;
 			}
 		}
 		return null;
@@ -63,10 +63,10 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
 	 */
 
 	private IPiece nextInRow(IPiece p) {
-		for(int i = 0; i < puzzle().pieces().size(); ++i) {
-			if(p.eastSide(p_arr[i])) {
+		for(IPiece pp : p_arr) {
+			if(p.eastSide(pp)) {
 				subOne();
-				return p_arr[i];
+				return pp;
 			}
 		}
 		return null;
@@ -80,10 +80,10 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
 	 */
 
 	private IPiece nextInCol(IPiece p) {
-		for(int i = 0; i < puzzle().pieces().size(); ++i) {
-			if(p.southSide(p_arr[i])) {
+		for(IPiece pp : p_arr) {
+			if(p.southSide(pp)) {
 				subOne();
-				return p_arr[i];
+				return pp;
 			}
 		}
 		return null;
