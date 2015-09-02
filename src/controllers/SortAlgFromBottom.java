@@ -1,7 +1,6 @@
 package puzzlesolver;
 
 import java.util.Vector;
-import java.util.Iterator;
 import java.util.Collections;
 
 /**
@@ -143,7 +142,7 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 					puzzle().wait();
 				} catch(InterruptedException e) {}
 			}
-			puzzle().notify();
+//			puzzle().notify();
 			puzzle().pieces().addAll(result);
 		}
 	}

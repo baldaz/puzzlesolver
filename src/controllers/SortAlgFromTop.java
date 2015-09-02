@@ -1,7 +1,6 @@
 package puzzlesolver;
 
 import java.util.Vector;
-import java.util.Iterator;
 
 /**
  * Sorting class derived from abstract base SortAlg, contains the override of the
