@@ -23,11 +23,11 @@ public class PuzzleController implements IPuzzleController {
 	}
 
 	/**
-	 * @override
 	 * Sorting method, sorts the puzzle using SortAlg type object.
 	 * @param host name of the host server to connect with to sort the puzzle
 	 */
 
+	@Override
 	public void sort(String host) {
 		try {
 			IPuzzleServerController psc = (IPuzzleServerController) Naming.lookup("rmi://" + host + "/Resolve");
@@ -41,10 +41,10 @@ public class PuzzleController implements IPuzzleController {
 	}
 
 	/**
-	 * @override
 	 * Output sorted puzzle to the view
 	 */
 
+	@Override
 	public void output() {
 		view.outputPuzzle();
 	}

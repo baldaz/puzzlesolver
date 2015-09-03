@@ -14,7 +14,6 @@ IPuzzleServerController {
 	public PuzzleServerController() throws RemoteException {}
 
 	/**
-	 * @override
 	 * Sort a given puzzle by selecting a junction point near the middle of it
 	 * and creating 2 thread that sort their respective part and merge them at
 	 * the end of the process.
@@ -22,6 +21,7 @@ IPuzzleServerController {
 	 * @throws RemoteException
 	 */
 
+	@Override
 	public Puzzle sort(Puzzle model) throws RemoteException {
 		int msize = model.size();
 		int hsize = 0;

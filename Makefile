@@ -51,7 +51,7 @@ CPuzzleView.class: CPuzzle.class CIOPuzzle.class
 	$(JC) $(CBIN) src/client/views/IPuzzleView.java src/client/views/PuzzleView.java
 
 CPuzzleController.class: CPuzzle.class CPuzzleView.class
-	$(JC) $(CBIN) src/client/controllers/IPuzzleController.java src/client/controllers/PuzzleController.java
+	$(JC) $(CBIN) src/client/controllers/IPuzzleController.java src/client/controllers/PuzzleController.java src/server/controllers/IPuzzleServerController.java
 
 Client.class: CPuzzle.class CPuzzleController.class
 	$(JC) $(CBIN) src/client/PuzzleSolverClient.java
