@@ -111,3 +111,9 @@ metodo /Lookup/ e richiama il metodo /sort/ che risiede sul server, passando
 come parametro l'oggetto /Serializable/ di tipo /Puzzle/ da riordinare. Infine
 aggiorna l'oggetto /Puzzle/ locale con la copia riordinata ottenuta in risposta
 dal server.
+
+* Note
+
+Per la compilazione, make dovrà avere come parametro la parte che si intende
+compilare, ovvero make Client per il client e make Server per il server, sono
+stati aggiunti i due script bash come richiesto da specifiche.

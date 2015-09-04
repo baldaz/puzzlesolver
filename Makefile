@@ -62,4 +62,4 @@ startServer:
 	rmiregistry -J-Dclasspath=$(SBIN) & java -cp $(SBIN) PuzzleSolverServer localhost &
 
 clean:
-	$(RM) bin/puzzlesolver/*.class $(RM) bin/*.class
+	$(RM) bin/puzzlesolver/*.class $(RM) bin/*.class $(RM) bin/server/*.class $(RM) bin/client/*.class $(RM) bin/server/puzzlesolver/*.class $(RM) bin/client/puzzlesolver/*.class
