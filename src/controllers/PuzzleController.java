@@ -19,7 +19,6 @@ public class PuzzleController implements IPuzzleController {
 	}
 
 	/**
-	 * @override
 	 * Sorting method, sorts the puzzle using SortAlg derived objects. First
 	 * off all it get a point near the middle of the Vector of pieces
 	 * representing the puzzle, then it launch 2 threads passing to them a
@@ -27,6 +26,7 @@ public class PuzzleController implements IPuzzleController {
 	 * reference of a shared object to allow communication between the threads.
 	 */
 
+	@Override
 	public void sort() {
 		int m_size = view.puzzle().size();
 		int h_size = 0;
@@ -52,10 +52,10 @@ public class PuzzleController implements IPuzzleController {
 	}
 
 	/**
-	 * @override
 	 * Output sorted puzzle to the view.
 	 */
 
+	@Override
 	public void output() {
 		view.outputPuzzle();
 	}

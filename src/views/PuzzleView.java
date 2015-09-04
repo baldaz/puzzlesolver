@@ -14,7 +14,8 @@ public class PuzzleView implements IPuzzleView {
 
     /**
      * Constructor
-     * @param io IOFile type representing the puzzle file, provides input and output features.
+	 * @param io IOFile type representing the puzzle file, provides input and
+	 * output features.
      */
 
     public PuzzleView(IOFile io) {
@@ -30,10 +31,10 @@ public class PuzzleView implements IPuzzleView {
     }
 
     /**
-	 * @override
      * Read input from file.
      */
 
+	@Override
     public void inputPuzzle() {
 		try {
 			io.read();
@@ -43,10 +44,10 @@ public class PuzzleView implements IPuzzleView {
     }
 
     /**
-	 * @override
      * Write output to file.
      */
 
+	@Override
     public void outputPuzzle() {
         io.write();
     }

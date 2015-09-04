@@ -40,7 +40,7 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
 	 */
 
 	private IPiece firstPiece() {
-		for(IPiece p:p_arr) {
+		for(IPiece p : p_arr) {
 			if(p.northBorder() && p.westBorder()) {
 				subOne();
 				return p;
@@ -58,7 +58,7 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
 	 */
 
 	private IPiece nextInRow(IPiece p) {
-		for(IPiece pp:p_arr) {
+		for(IPiece pp : p_arr) {
 			if(p.eastSide(pp)) {
 				subOne();
 				return pp;
@@ -76,7 +76,7 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
 	 */
 
 	private IPiece nextInCol(IPiece p) {
-		for(IPiece pp:p_arr) {
+		for(IPiece pp : p_arr) {
 			if(p.southSide(pp)) {
 				subOne();
 				return pp;
@@ -113,6 +113,7 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
 	 * vector of Piece created to the puzzle member.
 	 */
 
+	@Override
 	public void sort() {
 		IPiece first = firstPiece(); // first piece
 		while(size() > 0) {
@@ -122,10 +123,10 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
 	}
 
 	/**
-	 * @override
 	 * Override of the public method run of the interface Runnable
 	 */
 
+	@Override
 	public void run() {
 		sort();
 		getShared().setTopDone();

@@ -1,7 +1,8 @@
 package puzzlesolver;
 
 /**
- * Piece model representing a tile of a text puzzle, formed by an identifier, the character it represents, and nearby
+ * Piece model representing a tile of a text puzzle, formed by an identifier,
+ * the character it represents, and nearby
  * pieces informations at his four cardinal points, provided with getters.
  */
 
@@ -44,9 +45,11 @@ public class Piece implements IPiece {
 	/**
 	 * Check if a given piece is the north piece of the current one
 	 * @param p piece of the puzzle that could be at north of the current one
-	 * @return returns true if the given piece p is at north of the current one, else false
+	 * @return returns true if the given piece p is at north of the current
+	 * one, else false
 	 */
 
+	@Override
 	public boolean northSide(IPiece p) {
 		Piece pp = (Piece) p;
 		return (pp.id().equals(north));
@@ -55,9 +58,11 @@ public class Piece implements IPiece {
 	/**
 	 * Check if a given piece is the east piece of the current one
 	 * @param p piece of the puzzle that could be at east of the current one
-	 * @return returns true if the given piece p is at east of the current one, else false
+	 * @return returns true if the given piece p is at east of the current one,
+	 * else false
 	 */
 
+	@Override
 	public boolean eastSide(IPiece p) {
 		Piece pp = (Piece) p;
 		return (pp.id().equals(east));
@@ -66,9 +71,11 @@ public class Piece implements IPiece {
 	/**
 	 * Check if a given piece is the south piece of the current one
 	 * @param p piece of the puzzle that could be at south of the current one
-	 * @return returns true if the given piece p is at south of the current one, else false
+	 * @return returns true if the given piece p is at south of the current
+	 * one, else false
 	 */
 
+	@Override
 	public boolean southSide(IPiece p) {
 		Piece pp = (Piece) p;
 		return (pp.id().equals(south));
@@ -77,9 +84,11 @@ public class Piece implements IPiece {
 	/**
 	 * Check if a given piece is the west piece of the current one
 	 * @param p piece of the puzzle that could be at west of the current one
-	 * @return returns true if the given piece p is at west of the current one, else false
+	 * @return returns true if the given piece p is at west of the current one,
+	 * else false
 	 */
 
+	@Override
 	public boolean westSide(IPiece p) {
 		Piece pp = (Piece) p;
 		return (pp.id().equals(west));
@@ -87,36 +96,44 @@ public class Piece implements IPiece {
 
 	/**
 	 * Check if the current piece has "VUOTO" on his north side
-	 * @return returns true if the current piece has "VUOTO" on his north side, otherwise returns false
+	 * @return returns true if the current piece has "VUOTO" on his north side,
+	 * otherwise returns false
 	 */
 
+	@Override
 	public boolean northBorder() {
 		return north.equals("VUOTO");
 	}
 
 	/**
 	 * Check if the current piece has "VUOTO" on his east side
-	 * @return returns true if the current piece has "VUOTO" on his east side, otherwise returns false
+	 * @return returns true if the current piece has "VUOTO" on his east side,
+	 * otherwise returns false
 	 */
 
+	@Override
 	public boolean eastBorder() {
 		return east.equals("VUOTO");
 	}
 
 	/**
 	 * Check if the current piece has "VUOTO" on his south side
-	 * @return returns true if the current piece has "VUOTO" on his south side, otherwise returns false
+	 * @return returns true if the current piece has "VUOTO" on his south side,
+	 * otherwise returns false
 	 */
 
+	@Override
 	public boolean southBorder() {
 		return south.equals("VUOTO");
 	}
 
 	/**
 	 * Check if the current piece has "VUOTO" on his west side
-	 * @return returns true if the current piece has "VUOTO" on his west side, otherwise returns false
+	 * @return returns true if the current piece has "VUOTO" on his west side,
+	 * otherwise returns false
 	 */
 
+	@Override
 	public boolean westBorder() {
 		return west.equals("VUOTO");
 	}
@@ -127,6 +144,7 @@ public class Piece implements IPiece {
 	 * @return returns the character that represent current piece
 	 */
 
+	@Override
 	public String toString() {
 		return ch;
 	}

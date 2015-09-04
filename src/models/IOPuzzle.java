@@ -35,6 +35,7 @@ public class IOPuzzle extends IOFile {
 	 * invalid input.
 	 */
 
+	@Override
 	public void read() throws IOException {
 		try (BufferedReader reader = Files.newBufferedReader(toPath(), charset)) {
 			String line = null;
@@ -62,10 +63,12 @@ public class IOPuzzle extends IOFile {
 
 	/**
 	 * Implementation of abstract method void write() from IOFile.
-	 * Write data from Puzzle reference from super class IOFile and write it into the file placed in outpath parameter in the
+	 * Write data from Puzzle reference from super class IOFile and write it
+	 * into the file placed in outpath parameter in the
 	 * constructor.
 	 */
 
+	@Override
 	public void write() {
 		int row = 0;
 		int col = 1;
