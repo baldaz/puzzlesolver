@@ -56,12 +56,13 @@ l'ordinamento e scritto la sua "parte" sull'oggetto puzzle condiviso.
 
 ** I thread
 
-Il programma avvia in tutti i casi 3 thread distinti, il main thread e i due
-thread di ordinamento. Per mantenere un approccio il più thread-safe possibile,
-sull'oggetto condiviso di tipo /Puzzle/ vengono effettuate solamente operazioni
-di lettura, mentre per effettuare modifiche vengono utilizzate strutture
-ausiliarie Vector, che ad algoritmo completato vengono utilizzate nella
-sostituzione dell'oggetto puzzle inizialmente scomposto.\\
+Il programma avvia in tutti i casi 3 thread distinti (oltre al garbage
+collector), il main thread e i due thread di ordinamento. Per mantenere un
+approccio il più thread-safe possibile, sull'oggetto condiviso di tipo /Puzzle/
+vengono effettuate solamente operazioni di lettura, mentre per effettuare
+modifiche vengono utilizzate strutture ausiliarie Vector, che ad algoritmo
+completato vengono utilizzate nella sostituzione dell'oggetto puzzle
+inizialmente scomposto.\\
 Unica eccezione a quanto detto si verifica alla fine dell'esecuzione del metodo
 di ordinamento, all'interno del metodo run() delle due classi /Runnable/, qui
 infatti, mediante costrutti /synchronized/ e /wait/notify/ opportunamente
