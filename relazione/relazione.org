@@ -144,5 +144,5 @@ positivo. E' stato creato un MakeFile apposito per la compilazione del
 progetto, è sufficiente lanciare il comando make. Con make clean vengono
 ripuliti i folder /bin/ da tutti i file .class, è stato inoltre creato uno
 script bash per effettuare tutto il processo di pulizia-compilazione-esecuzione
-chiamato PuzzleSolver.sh, richiede come parametri i due file rispettivamente di
+chiamato puzzlesolver.sh, richiede come parametri i due file rispettivamente di
 input e output.
