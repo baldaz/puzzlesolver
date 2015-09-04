@@ -144,3 +144,8 @@ esclusivamente orientata al lato performance dell'algoritmo, in quanto
 risultava più semplice e veloce scorrere un array piuttosto che un Vector.
 
 * Compilazione ed esecuzione
+
+Come per la prima parte del progetto, make e make clean sono a disposizione,
+assieme allo script puzzlesolver.sh per che permette di automatizzare
+pulizia-compilazion-esecuzione richiedendo sempre input e output file come
+parametri.
