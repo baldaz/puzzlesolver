@@ -1,7 +1,5 @@
 package puzzlesolver;
 
-import java.util.Vector;
-import java.util.Iterator;
 import java.io.IOException;
 
 /**
@@ -31,10 +29,10 @@ public class PuzzleView implements IPuzzleView {
 	}
 
 	/**
-	 * @override
 	 * Read input from file.
 	 */
 
+	@Override
 	public void inputPuzzle() {
 		try {
 			io.read();
@@ -44,20 +42,20 @@ public class PuzzleView implements IPuzzleView {
 	}
 
 	/**
-	 * @override
 	 * Write output to file.
 	 */
 
+	@Override
 	public void outputPuzzle() {
 		io.write();
 	}
 
 	/**
-	 * @override
 	 * Set a new puzzle
 	 * @param p a reference to a puzzle object
 	 */
 
+	@Override
 	public void updatePuzzle(Puzzle p) {
 		io.setPuzzle(p);
 	}

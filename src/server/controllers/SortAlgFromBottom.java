@@ -1,7 +1,6 @@
 package puzzlesolver;
 
 import java.util.Vector;
-import java.util.Iterator;
 import java.util.Collections;
 
 /**
@@ -119,6 +118,7 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 	 * vector of Piece created to the puzzle member.
 	 */
 
+	@Override
 	public void sort() {
 		IPiece first = firstPiece(); // first piece
 		while(size() > 0) {
@@ -129,10 +129,10 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 	}
 
 	/**
-	 * @override
 	 * start the sorting method
 	 */
 
+	@Override
 	public void run() {
 		sort();
 		getShared().setBotDone();
@@ -145,8 +145,6 @@ public class SortAlgFromBottom extends SortAlg implements Runnable {
 					e.printStackTrace();
 				}
 			}
-			System.out.println("Bot done - sorted [" + result.size() + "]");
-			puzzle().notify();
 			puzzle().pieces().addAll(result);
 		}
 	}

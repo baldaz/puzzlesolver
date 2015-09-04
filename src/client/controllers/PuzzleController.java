@@ -32,7 +32,8 @@ public class PuzzleController implements IPuzzleController {
 		try {
 			IPuzzleServerController psc = (IPuzzleServerController) Naming.lookup("rmi://" + host + "/Resolve");
 			Puzzle p = psc.sort(view.puzzle());
-			view.puzzle().setPieces(p.pieces());
+			/* view.puzzle().setPieces(p.pieces()); */
+			view.updatePuzzle(p);
 		}catch(ConnectException e) {
 			System.out.println("Connection problems");
 		}catch(Exception ex) {

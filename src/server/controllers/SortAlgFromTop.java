@@ -1,7 +1,6 @@
 package puzzlesolver;
 
 import java.util.Vector;
-import java.util.Iterator;
 
 /**
  * Sorting class derived from abstract base SortAlg, contains the override of
@@ -117,6 +116,7 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
 	 * vector of Piece created to the puzzle member.
 	 */
 
+	@Override
 	public void sort() {
 		IPiece first = firstPiece(); // first piece
 		while(size() > 0) {
@@ -126,10 +126,10 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
 	}
 
 	/**
-	 * @override
 	 * start the sorting method
 	 */
 
+	@Override
 	public void run() {
 		sort();
 		getShared().setTopDone();
@@ -141,7 +141,6 @@ public class SortAlgFromTop extends SortAlg implements Runnable {
 					e.printStackTrace();
 				}
 			}
-			System.out.println("Top done - sorted [" + result.size() + "]");
 			puzzle().setPieces(result);
 			getShared().setTopWitten();
 			puzzle().notify();

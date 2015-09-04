@@ -1,6 +1,5 @@
 package puzzlesolver;
 
-import java.util.Vector;
 import java.rmi.*;
 import java.rmi.server.*;
 
@@ -49,7 +48,6 @@ IPuzzleServerController {
 		} catch(InterruptedException e) {
 			System.err.println(e);
 		}
-		System.out.println("------");
 		// get the resulted Vector of pieces (sorted) and merge it with the
 		// second Vector of pieces.
 		return model;
