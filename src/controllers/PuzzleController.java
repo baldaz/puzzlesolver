@@ -19,20 +19,20 @@ public class PuzzleController implements IPuzzleController {
 	}
 
 	/**
-	 * @override
 	 * Sorting method, sorts the puzzle using SortAlg type object.
 	 */
 
+	@Override
 	public void sort() {
 		SortAlg alg = new SortAlgSeq(view.puzzle());
 		alg.sort();
 	}
 
 	/**
-	 * @override
 	 * Output sorted puzzle to the view.
 	 */
 
+	@Override
 	public void output() {
 		view.outputPuzzle();
 	}

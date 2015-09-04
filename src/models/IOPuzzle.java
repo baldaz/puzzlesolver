@@ -37,6 +37,7 @@ public class IOPuzzle extends IOFile {
 	 * invalid input.
 	 */
 
+	@Override
 	public void read() throws IOException {
 		try (BufferedReader reader = Files.newBufferedReader(toPath(), charset)) {
 			String line = null;
@@ -69,6 +70,7 @@ public class IOPuzzle extends IOFile {
 	 * opath parameter in the constructor.
 	 */
 
+	@Override
 	public void write() {
 		int row = 0;
 		int col = 1;

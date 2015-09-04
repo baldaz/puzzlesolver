@@ -1,8 +1,6 @@
 package puzzlesolver;
 
 import java.io.IOException;
-import java.util.Vector;
-import java.util.Iterator;
 
 /**
  * View class, implementation of IPuzzleView interface.
@@ -31,10 +29,10 @@ public class PuzzleView implements IPuzzleView {
 	}
 
 	/**
-	 * @override
 	 * Read input from file.
 	 */
 
+	@Override
 	public void inputPuzzle() {
 		try {
 			io.read();
@@ -44,10 +42,10 @@ public class PuzzleView implements IPuzzleView {
 	}
 
 	/**
-	 * @override
 	 * Write output to file.
 	 */
 
+	@Override
 	public void outputPuzzle() {
 		io.write();
 	}

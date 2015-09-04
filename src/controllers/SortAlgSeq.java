@@ -91,7 +91,6 @@ public class SortAlgSeq extends SortAlg {
 	}
 
 	/**
-	 * @override
 	 * Public method that sort the puzzle by using private methods to find the
 	 * first piece and the following ones.  After locating the first piece,
 	 * through a while loop, this method sort every row giving at every cycle
@@ -101,6 +100,7 @@ public class SortAlgSeq extends SortAlg {
 	 * vector of Piece created to the puzzle member.
 	 */
 
+	@Override
 	public void sort() {
 		boolean loop = true;
 		IPiece first = firstPiece(); // first piece

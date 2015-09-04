@@ -50,6 +50,7 @@ public class Piece implements IPiece {
 	 * else false
 	 */
 
+	@Override
 	public boolean northSide(IPiece p) {
 		Piece pp = (Piece) p;
 		return (pp.id().equals(north));
@@ -63,6 +64,7 @@ public class Piece implements IPiece {
 	 * else false
 	 */
 
+	@Override
 	public boolean eastSide(IPiece p) {
 		Piece pp = (Piece) p;
 		return (pp.id().equals(east));
@@ -76,6 +78,7 @@ public class Piece implements IPiece {
 	 * else false
 	 */
 
+	@Override
 	public boolean southSide(IPiece p) {
 		Piece pp = (Piece) p;
 		return (pp.id().equals(south));
@@ -89,6 +92,7 @@ public class Piece implements IPiece {
 	 * else false
 	 */
 
+	@Override
 	public boolean westSide(IPiece p) {
 		Piece pp = (Piece) p;
 		return (pp.id().equals(west));
@@ -100,6 +104,7 @@ public class Piece implements IPiece {
 	 * otherwise returns false
 	 */
 
+	@Override
 	public boolean northBorder() {
 		return north.equals("VUOTO");
 	}
@@ -110,6 +115,7 @@ public class Piece implements IPiece {
 	 * otherwise returns false
 	 */
 
+	@Override
 	public boolean eastBorder() {
 		return east.equals("VUOTO");
 	}
@@ -120,6 +126,7 @@ public class Piece implements IPiece {
 	 * otherwise returns false
 	 */
 
+	@Override
 	public boolean southBorder() {
 		return south.equals("VUOTO");
 	}
@@ -130,16 +137,17 @@ public class Piece implements IPiece {
 	 * otherwise returns false
 	 */
 
+	@Override
 	public boolean westBorder() {
 		return west.equals("VUOTO");
 	}
 
 	/**
-	 * @override
 	 * toString override
 	 * @return returns the character that represent current piece
 	 */
 
+	@Override
 	public String toString() {
 		return ch;
 	}
