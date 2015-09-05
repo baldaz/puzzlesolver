@@ -1,7 +1,5 @@
 package puzzlesolver;
 
-// This class will contain sorting logic of the puzzle
-import java.util.Vector;
 import java.rmi.*;
 
 /**
@@ -32,11 +30,10 @@ public class PuzzleController implements IPuzzleController {
 		try {
 			IPuzzleServerController psc = (IPuzzleServerController) Naming.lookup("rmi://" + host + "/Resolve");
 			Puzzle p = psc.sort(view.puzzle());
-			/* view.puzzle().setPieces(p.pieces()); */
 			view.updatePuzzle(p);
-		}catch(ConnectException e) {
+		} catch(ConnectException e) {
 			System.out.println("Connection problems");
-		}catch(Exception ex) {
+		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
 	}

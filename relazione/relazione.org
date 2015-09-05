@@ -112,8 +112,25 @@ come parametro l'oggetto /Serializable/ di tipo /Puzzle/ da riordinare. Infine
 aggiorna l'oggetto /Puzzle/ locale con la copia riordinata ottenuta in risposta
 dal server.
 
+** Robustezza
+
+Nel caso di problemi di connessione, o caduta di una delle due parti durante
+una sessione di ordinamento viene notificata con il lancio di un eccezione
+remota o di tipo /ConnectException/, opportunamente gestite da blocchi
+/try/catch/.
+
 * Note
 
 Per la compilazione, make dovrà avere come parametro la parte che si intende
 compilare, ovvero make Client per il client e make Server per il server, sono
-stati aggiunti i due script bash come richiesto da specifiche.
+stati aggiunti i due script bash come richiesto da specifiche.\\
+Non essendo espressamente richiesto nelle specifiche della terza parte, nel
+progetto non è stato implementato un sistema di gestione di richieste
+concorrenti da parte di clients multipli; nel caso la soluzione più rapida
+pensata consiste nell'inserire un contatore statico di client che richiedono
+connessione all'interno dell'oggetto remoto, un metodo di registrazione e una
+lista dei puzzle associati ad ogni client, o, in alternativa, un sistema di
+callback utilizzando un interfaccia remota e passando il riferimento del
+controller lato client al server, per evitare di scrivere sul registro rmi il
+riferimento al client servirebbe tuttavia l'utilizzo del compilatore rmi per
+generare stub e skeleton del riferimento da esportare sul server.
